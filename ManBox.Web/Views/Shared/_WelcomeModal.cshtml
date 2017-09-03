@@ -1,0 +1,35 @@
+﻿@model ManBox.Model.ViewModels.SubscribeNewsletterViewModel
+
+<div id="welcomeModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+    
+    <div class="modal-body">
+
+        <div class="welcome-message">
+            <img class="logo" src="~/Content/images/logo_blue_med.png" alt="manbox logo" />
+            @Html.LocalizedText("WelcomeModalMsgList")
+            <img class="approval-seal" src="~/Content/images/chuck-approved-med.png" alt="approved"/>
+        </div>
+
+        <div class="welcome-newsletter hidden-phone">
+        <img src="~/Content/images/samples.png" />
+        <h4>@Html.LocalizedText("WelcomeModalSubscribe")</h4>
+        @using (Html.BeginForm("SubscribeNewsletterEmail", "Account", FormMethod.Post))
+        {        
+            @Html.ValidationMessageFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { placeholder = "email@email.com", @class = "input-block-level" })
+            <br /><button type="submit" class="btn btn-primary btn-large btn-block">@Html.LocalizedText("WelcomeModalCta")</button>
+            <div class="cta-caption">@Html.LocalizedText("WelcomeModalNoSpam")</div>
+        }
+
+
+            <div class="alert alert-success">
+              <i class="icon-ok"></i>&nbsp; @Html.LocalizedText("WelcomeModalSubscribeSuccess")
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">@Html.LocalizedText("CloseBtn")</button>
+    </div>
+    
+</div>

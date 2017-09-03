@@ -1,0 +1,151 @@
+﻿@model ManBox.Model.ViewModels.LandingPageViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutMinimal.cshtml";
+}
+
+<div class="landing-wrapper">
+
+    <div class="landing">
+        <h1>@Html.LocalizedText("LandingHeaderTitle")</h1>
+        <h2>@Html.LocalizedText("LandingHeaderTitle2")</h2>
+
+        <div class="startnow">
+            <a class="btn btn-success btn-large btn-compose" href="@Url.Action("Compose", "Box")">
+                @Html.LocalizedText("LandingCreateBoxBtn")
+                <span class="startnow-info">@Html.LocalizedText("LandingCreateBoxInfo")</span>
+            </a>
+
+            <a class="gifts" href="@Url.Action("Gifts", "Box")">
+                <i class="icon-gift"></i>
+                @Html.LocalizedText("LandingGoToGifts")
+                <span class="startnow-info">@Html.LocalizedText("LandingGiftsInfo")</span>
+            </a>
+
+
+            <div class="startnow-arrow hidden-phone">
+                <img src="@Url.LocalizedImage("trynow.png")" alt="try now" />
+            </div>
+        </div>
+        <div class="landing-testimonials hidden-phone">
+            <img src="@Url.LocalizedImage("testimonialsLanding.png")" />
+        </div>
+    </div>
+
+</div>
+
+<div class="container">
+
+
+    <div class="landing-addon">
+        <a href="@Url.Action("Compose", "Box")"><img src="~/Content/images/landing-brands.png" /></a>
+    </div>
+
+    <div class="row landing-secondary">
+        <div class="span8">
+            <div class="point">
+                <div class="point-icon">
+                    <i class="icon-download-alt"></i>
+                </div>
+                <div class="point-text">
+                    <h4>@Html.LocalizedText("LandingSecondary1Title")</h4>
+                    <p>@Html.LocalizedText("LandingSecondary1Content", new[] { @Url.Action("Compose", "Box") })</p>
+                </div>
+            </div>
+            <div class="point">
+                <div class="point-icon">
+                    <i class="icon-time"></i>
+                </div>
+                <div class="point-text">
+                    <h4>@Html.LocalizedText("LandingSecondary2Title")</h4>
+                    <p>@Html.LocalizedText("LandingSecondary2Content", new[] { @Url.Action("Compose", "Box") })</p>
+                </div>
+            </div>
+            <div class="point">
+                <div class="point-icon">
+                    <i class="icon-thumbs-up"></i>
+                </div>
+                <div class="point-text">
+                    <h4>@Html.LocalizedText("LandingSecondary3Title")</h4>
+                    <p>@Html.LocalizedText("LandingSecondary3Content", new[] { @Url.Action("Compose", "Box") })</p>
+                </div>
+            </div>
+
+            <a class="btn btn-success btn-large" href="@Url.Action("Compose", "Box")">@Html.LocalizedText("LandingCreateBoxBtn") <i class="icon-circle-arrow-right icon-white"></i></a>
+        </div>
+        <div class="span4 seal">
+
+            <a href="javascript:void(0)" class="show-landing-video" data-src="@Html.LocalizedText("YoutubeVideoUrl")">
+                <img class="landing-video-thumb" src="~/Content/images/landing/landing_vid_thumb.jpg" alt="play video" />
+            </a>
+
+
+            <div class="fb-like-box" data-href="http://www.facebook.com/pages/Manbox/100147390164476" data-border-color="#87B7CF" data-width="288" data-show-faces="true" data-stream="false" data-header="false"></div>
+
+            <br />
+            <a href="https://twitter.com/manboxTeam" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @@manboxTeam</a>
+            <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
+
+        </div>
+    </div>
+
+    @if (ManBox.Web.ManBoxHostInfo.Instance.CountryIso == AppConstants.Countries.IsoBE && this.UICulture == AppConstants.Languages.IsoFrench)
+    {
+        <div class="landing-addon">
+
+            <a href="@Url.Action("Compose", "Box")"><img src="~/Content/images/_fr/asseenon.png" alt="ils parlent de nous" /></a>
+        </div>
+    }
+
+    <div class="row">
+        <div class="span12 blog-posts">
+            @if (Model.BlogFeed != null && Model.BlogFeed.Posts != null)
+            {
+                <h3>@Html.LocalizedText("BlogPostsTitle")</h3>
+                foreach (var d in Model.BlogFeed.Posts)
+                {
+                    <ul>
+                        <li>
+                            <a class="blog-title" href="@d.Url">@d.Title</a>
+                            <p><a href="@d.Url">@d.Excerpt</a></p>
+                        </li>
+                    </ul>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<div id="closedInfoModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="closedInfoModalLabel" aria-hidden="true">
+    <!--Commons Attribution and must be attributed as:
+    Sad by Istiko Rahadi from The Noun Project-->
+    <img src="http://portalvhds6wfqq29j7cwwp.blob.core.windows.net/static/Sad_Istiko_Rahadi.png" alt="sad " />
+
+    @Html.LocalizedText("ClosedInfo")
+</div>
+
+
+@section modals {
+    @Html.Partial("_VideoModal")
+}
+
+@section scripts {
+    <script>
+        $('.show-landing-video').click(function () {
+            var src = $(this).data('src');
+            $('#videoModal iframe').attr('src', src);
+            $('#videoModal').modal();
+            $('#videoModal').on('hidden', function () {
+                $('#videoModal iframe').attr('src', '#');
+            })
+        });
+
+        $(document).ready(function () {
+            $('#closedInfoModal').modal();
+            $('#closedInfoModal .skip').click(function () {
+                $('#closedInfoModal').modal('hide');
+            });
+        });
+
+    </script>
+}

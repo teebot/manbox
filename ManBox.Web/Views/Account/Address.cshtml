@@ -1,0 +1,51 @@
+﻿@model AddressViewModel
+
+<div class="container">
+<div class="row sheet">
+    <div class="span3">
+        @Html.Partial("_AccountMenu", new AccountMenuViewModel() { ActiveMenuItem = AccountMenuItem.Address })
+    </div>
+    <div class="span9">
+
+    <h3>@Html.LocalizedText("AccountAddressUpdate")</h3> 
+        @using (Html.BeginForm("UpdateAddress", "Account", FormMethod.Post))
+        { 
+            
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            
+
+                @Html.LabelFor(m => m.LastName)
+                @Html.TextBoxFor(m => m.LastName, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            
+
+                @Html.LabelFor(m => m.Street)
+                @Html.TextAreaFor(m => m.Street, new { @class = "input-huge" })
+                @Html.ValidationMessageFor(m => m.Street)
+            
+
+                @Html.LabelFor(m => m.City)
+                @Html.TextBoxFor(m => m.City, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.City)
+            
+            
+                @Html.LabelFor(m => m.PostalCode)
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "input-mini" })
+                @Html.ValidationMessageFor(m => m.PostalCode)
+
+                @Html.LabelFor(m => m.Province)
+                @Html.TextBoxFor(m => m.Province, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.Province)
+                
+                @Html.LabelFor(m => m.CountryId)
+                @Html.DropDownListFor(m => m.CountryId, Model.CountryList, new { @class = "input-medium" })
+
+            <br />
+            <button type="submit" class="btn btn-primary">@Html.LocalizedText("Confirm")</button>
+        }
+
+    </div>
+</div>
+</div>

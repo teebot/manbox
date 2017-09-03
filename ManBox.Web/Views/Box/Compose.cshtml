@@ -1,0 +1,269 @@
+﻿@model ManBox.Model.ViewModels.CatalogOverviewViewModel
+
+
+@*<div class="approval hidden-phone">
+        <img src="~/Content/images/chuck-approved-med.png" alt="chuck norris seal of approval" />
+</div>*@
+
+<div class="section first" id="packs">
+<div class="container">
+    <div class="big-title hidden-phone">
+        @Html.LocalizedText("ComposePacksTitle") 
+    </div>
+
+    <div class="row">
+            <!-- ko foreach: Packs -->
+        
+            <div class="pack-col" data-bind="css: { activePack : ($index() === 2)  }">
+                <h3 class="pack-title" data-bind="text: Title"></h3>
+                <p class="pack-desc hidden-phone" data-bind="text: Description"></p>
+
+                <div class="pack-content">
+                    <div class="pack-products">
+                        <!-- ko foreach: Products -->
+                        <div class="product-image" data-trigger="hover" data-html="true" data-bind="{ attr : { 'data-title': Title(), 'data-content' : Brand() + ' - ' + Description() + '<br /><br />  @Html.LocalizedText("ComposePacksCatalogPrice")    : <span class=popover-price>' + AdvisedPriceCurrency() + ' </span><br /> @Html.LocalizedText("ComposePacksZoom")    ', 'data-placement' : $parentContext.$index() !== 3 ? 'left' : 'right' } }">
+                            <a data-toggle="modal" data-bind="attr: { href: '/Box/Zoom/' + Reference() }" data-target="#zoomModal">
+                                <img data-bind="attr: { src: '@Url.CdnPath()/products/' + Reference() + '_S.jpg' }" src="@Url.Content("~/Content/images/tinytrans.gif")" />
+                            </a>
+                        </div>
+                            <!-- ko if: ($index() !== ($parent.Products().length - 1)) -->
+                            <span class="plus-sign" data-bind="">+</span>
+                            <!-- /ko -->
+                            <!-- ko if: ($index() === ($parent.Products().length - 1)) -->
+                            <span data-bind="">&nbsp;</span>
+                            <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <div class="pack-bottom">
+                    <!-- ko if: AdvisedPriceCurrency -->
+                    <div class="deal">
+                        <i class="icon-info-sign" data-trigger="hover" data-html="true" data-title="@Html.LocalizedText("ComposePacksPopover1")"></i> @Html.LocalizedText("ComposePacksCatalogPrice") <span class="advised-price" data-bind="text: AdvisedPriceCurrency"></span><br />
+                        <i class="icon-info-sign" data-trigger="hover" data-html="true" data-title="@Html.LocalizedText("ComposePacksPopover2")"></i> @Html.LocalizedText("ComposePacksDiscount") <span class="saving" data-bind="text: SavingCurrency"></span>
+                    </div>
+                    
+                    <!-- /ko -->
+
+                    <div class="pack-price price price-big" data-bind="text: PriceCurrency"></div>
+                
+                    @using(Html.BeginForm("AddPackToSubscription", "Box", FormMethod.Post)) {
+                        <input type="hidden" name="packId" data-bind="value: PackId" />
+                        <button type="submit" class="btn btn-large btn-success">@Html.LocalizedText("ComposePacksChooseBtn") <i class="icon-shopping-cart icon-white"></i></button>
+                        <!-- ko if: FreeShipping -->
+                        <div class="pack-free-shipping"><i class="icon-truck"></i> @Html.LocalizedText("FreeShipping")</div>
+                        <!-- /ko -->
+                    }
+                    
+                </div>
+            </div>
+            <!-- /ko -->
+    </div>
+
+</div>
+</div>
+
+
+
+<div class="section" id="compose">
+
+<div class="container">
+    
+    <div class="big-title">@Html.LocalizedText("ComposeCustomTitle")</div>
+    <div class="row compose-header hidden-phone">
+        <div class="span8"><h2>@Html.LocalizedText("ComposeBasicsTitle")</h2></div>
+        <div class="span4 selection-title"><h2>@Html.LocalizedText("ComposeSelectionTitle")</h2></div>
+    </div>
+
+    <div class="row compose">
+        <div class="span2 categories hidden-phone">
+            <div id="categories-navigation">
+                <ul data-spy="affix" data-offset-top="125">
+                    <li data-bind="css: { active : (!activeCategory() || activeCategory() === 'all')  }">
+                        <a data-track-action="allCategoriesClick" href="@Url.Action("Compose", "Box", new { id = "" })">@Html.LocalizedText("AllProducts")</a>
+                    </li>
+
+                    <!-- ko foreach: ProductsCategories -->
+                    <li data-bind="css: { active : (TitleStd() == $root.activeCategory())  }">
+                        <a data-track-action="categoryClick" data-bind="attr: { href: '@Url.Action("Compose", "Box", new { id = "" })' + '/' + TitleStd() }"><span data-bind="text: Title"></span><i class="icon-caret-right"></i></a>
+                    </li>
+                    <!-- /ko -->
+
+                </ul>
+
+            </div>
+
+        </div> @*END SPAN 2 CAT*@
+
+        
+        <div class="span6 catalog">
+            <div id="catalog-overview">
+                <div>
+                    <!-- ko foreach: categoriesToShow() -->
+                    <a data-bind="attr: { 'id': Title }"></a>
+
+                    <div class="catalog-category">
+                        <h3 data-bind="text: Title"></h3>
+                    
+                        <a data-bind="visible: HasSizeChart, click: $root.showSizeAid" href="#" class="show-size-aid"><i class="icon-info-sign icon-white" data-track-action="sizeChartClick"></i>&nbsp;&nbsp;Guide des tailles</a>
+                        
+                    <!-- ko foreach: Products -->
+                        <div class="row catalog-product" data-track-action="productClick" data-bind="attr: { 'data-reference': Reference() }, css: { productDetail : Reference() === $root.activeProductDetail() }">
+                            
+                            <div class="product-description-short">
+                                <div class="product-image">
+                                    <a data-track-action="zoomProduct" data-toggle="modal" data-bind="attr: { href: '/Box/Zoom/' + Reference() }" data-target="#zoomModal">
+                                        <img data-bind="attr: { src: '@Url.CdnPath()/products/' + Reference() + '.jpg' }" src="@Url.Content("~/Content/images/tinytrans.gif")" />
+                                    </a>
+                                    <i class="icon-zoom-in" data-track-action="zoomProduct" data-toggle="modal" data-bind="attr: { href: '/Box/Zoom/' + Reference() }" data-target="#zoomModal"></i>
+                                </div>
+                                <div class="product-description">
+                                    <div class="price">
+                                        <!--  ko if: PriceCurrency() !== AdvisedPriceCurrency() -->
+                                        <div class="advised-price" data-bind="text: AdvisedPriceCurrency()"></div>
+                                        <!-- /ko -->
+
+                                        <div class="price-big" data-bind="text: PriceCurrency()"></div>
+                                    </div>
+
+                                    <!-- ko if: Brand() -->
+                                    <h4 class="brand-title" data-bind="text: Brand, click: $root.openProductDetail"></h4>
+                                    <!-- /ko -->
+                                    <h4 class="product-title" data-bind="text: Title, click: $root.openProductDetail"></h4>
+                                
+                                    <div class="description-text" data-bind="html: Description"></div>
+
+                                    <div class="selection-control selection-model">
+                                        <div class="single-model" data-bind="visible: Models().length === 1, text: Models()[0].Name"></div>
+
+                                        <div class="btn-toolbar" style="margin: 0;" data-bind="visible: Models().length > 1">
+                                          <div class="btn-group">
+                                            <!-- ko foreach: Models -->
+                                            <button class="btn" data-bind="text: Name, attr: { 'data-value': ModelId() }, click: $parent.selectModelSize, css: { active : $parent.selectedModelId() === ModelId() }"></button>
+                                            <!-- /ko -->
+                                          </div>
+                                        </div>
+                                        <button class="btn btn-add-to-cart btn-large btn-primary" data-track-action="addToCart" data-loading-text=" ... " data-bind="click: $root.addModel">@Html.LocalizedText("AddToCart") <i class="icon-arrow-right icon-white"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a data-track-action="moreDetail" class="more-detail" href="javascript:;" data-bind="click: $root.openProductDetail, attr: { 'data-reference': Reference()}, visible: Reference() !== $root.activeProductDetail()"><i class="icon-eye-open"></i> &nbsp;&nbsp; @Html.LocalizedText("MoreDetail") &nbsp;&nbsp; </a>
+                            <a data-track-action="lessDetail" class="less-detail" href="javascript:;" data-bind="click: $root.closeProductDetail, visible: Reference() === $root.activeProductDetail()"><i class="icon-angle-up"></i> &nbsp;&nbsp; @Html.LocalizedText("LessDetail") &nbsp;&nbsp; <i class="icon-angle-up"></i></a>
+                            
+                            <div class="product-description-detail" data-bind="visible: Reference() === $root.activeProductDetail()">
+                                <!-- ko if: Brand() -->
+                                <div class="brand-image">
+                                    <img class="img-rounded" data-bind="attr: { src: '@Url.CdnPath()/brands/' + Brand().toLowerCase() + '.jpg' }" src="@Url.Content("~/Content/images/tinytrans.gif")" />
+                                </div>
+                                <!-- /ko -->
+                                <div class="description-detail-text" data-bind="html: DescriptionDetail"></div>
+                            </div>
+                        </div>
+                    <!-- /ko --> @*end for each products*@
+                    </div>
+                    <!-- /ko --> @*end for each category*@
+                </div>
+            </div>
+            
+        </div> @*END SPAN 6 CHOICE *@
+
+        <div class="span4 cart">
+            <div id="subscr-selection" data-spy="affix" data-offset-top="125">
+
+                <div class="cart-notification" data-bind="visible: CartNotificationMessage() !== ''"> 
+                    <span data-bind="text: CartNotificationMessage"></span>
+                </div>
+
+                <div class="subscr-product subscr-pack" data-bind="if: Pack.Title">
+                    <div class="row selection-item">
+                        <div class="selection-picture"><img src="@Url.Content("~/Content/images/pack_icon.jpg")" /></div>
+                        <div class="selection-label">
+                            <div class="title"><span data-bind="text: Pack.Title"></span></div>
+                            <a class="remove" href="javascript:;"><i class="icon-trash" data-track-action="removePackFromCart" data-bind="click: removePack"></i></a>
+                            <div class="price" data-bind="text: Pack.Price"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subscr-product" data-bind="foreach: SelectedProducts">
+                    <div class="row selection-item">
+                        <div class="selection-picture"><img data-bind="attr: { src: '@Url.CdnPath()/products/' + ProductReference() + '.jpg' }" src="@Url.Content("~/Content/images/tinytrans.gif")" /></div>
+                        <div class="selection-label">
+                            <div class="title"><span data-bind="text: 'x' + Quantity()"></span> <span data-bind="text: ProductTitle"></span></div>
+                            <a href="javascript:;"><i class="icon-trash" data-track-action="removeFromCart" data-bind="click: removeModel"></i></a>
+                            <div class="cart-model" data-bind="text: ModelName"></div>
+                            <div class="price" data-bind="text: SubTotalPrice()"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-hover">
+                    <tr>
+                        <td>@Html.LocalizedText("CartSubTotal")</td>
+                        <td class="right-align"><span data-bind="text: ItemsTotal()"></span></td>
+                    </tr>
+                    <tr class="green">
+                        <td class="delivery"><span class="help">@Html.LocalizedText("CartShippingFee") <i class="icon-info-sign"></i></span></td>
+                        <td class="right-align"><span data-bind="text: ShippingFee()">0</span></td>
+                    </tr>
+                    <tr data-bind="visible: CouponAmount() && CouponAmount() !== ''" class="green">
+                        <td class="delivery"><span data-bind="text: CouponLabel"></span></td>
+                        <td class="right-align" data-bind="text: CouponAmount">0</td>
+                    </tr>
+                    <tr class="total-amount">
+                        <td>@Html.LocalizedText("CartTotal")</td>
+                        <td class="right-align"><span data-bind="text: SelectionTotal()"></span></td>
+                    </tr>
+                </table>
+   
+                @* checkout for new members*@
+                <form action="@Url.Action("Size", "Checkout", null, "https")" method="post" data-bind="visible: !IsSubscribed()">
+                    <button class="btn btn-success btn-large btn-checkout" data-bind="click: validateCheckout" type="submit">@Html.LocalizedText("CartCheckoutBtn") <i class="icon-shopping-cart icon-white"></i></button> 
+                </form>
+
+
+                @* checkout button for subscribed members*@
+                <form action="@Url.Action("ConfirmModification", "Checkout", null, "https")" method="post" data-bind="visible: IsSubscribed()">
+                    <button class="btn btn-checkout btn-large btn-warning" data-bind="css: { disabled : DeliveryState() !== 'New' }, click: validateCheckout">@Html.LocalizedText("CartModifyBtn")</button> 
+                </form>
+
+                <form action="@Url.Action("CancelModification", "Checkout", null, "https")" method="post" data-bind="visible: IsSubscribed() && DeliveryState() === 'New'">
+                    <button type="submit" class="btn btn-small btn-inverse pull-right">@Html.LocalizedText("CartCancelModifBtn")</button>
+                </form>
+                
+                <div class="clearfix"></div>
+                
+                <div class="trust-logo hidden-phone">
+                    <a data-track-action="trustLogo" href="http://www.instantssl.com/wildcard-ssl.html" target="_blank"><img src="@Url.Content("~/Content/images/comodo-site-secure.jpg")" alt="comodo ssl verified" /></a>
+                </div>
+
+                @*Phone cart button*@
+                <div class="bottom-nav visible-phone">
+                    <a data-track-action="howItWorks" class="help" href="#" data-toggle="modal" data-target="#howItWorksModal"><i class="icon-question-sign icon-white"></i></a>
+                    <button class="btn btn-info phone-goto-cart"> @Html.LocalizedText("CartMobileSelectionBtn") <span class="badge badge-info" data-bind="text: SelectedProducts().length"></span></button>
+                </div>
+                @*end phone cart*@
+
+            </div>
+        </div> @*END SPAN 4 RIGHT COLUMN*@
+    </div> @*END ROW*@
+
+</div>    
+</div>
+
+<!-- Segment Pixel - BE_CozyPixel_Manbox_rtg_box_compose - DO NOT MODIFY -->
+<img src="http://ad.himediadx.com/seg?add=1209861,188926,188931,188965,188969&t=2" width="1" height="1" />
+<!-- End of Segment Pixel -->
+
+@section modals {
+    @Html.Partial("_SizeChartModal")
+    @Html.Partial("_DeliveryModal")
+    @Html.Partial("_ZoomModal")
+}
+
+@section scripts {
+<script>
+var overviewData = @Html.Raw(Model.JsonOverviewData);
+</script>
+@Scripts.Render("~/bundles/compose")
+}

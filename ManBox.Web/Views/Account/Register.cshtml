@@ -1,0 +1,48 @@
+﻿@model ManBox.Model.ViewModels.LoginViewModel
+
+<div class="container">
+<div class="row">
+    <div class="span8 offset2"> 
+        <div class="register-box">
+            @if(this.UICulture == "nl") {
+            <h3>Lid worden</h3>
+            }
+            else 
+            {
+            <h3>S'inscrire</h3>
+            }
+
+            <div class="pull-left">       
+            @using(Html.BeginForm("Register", "Account", FormMethod.Post))
+            {
+                
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+                @Html.ValidationMessageFor(m => m.Email)
+                
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+                
+                <div>
+                    @if(this.UICulture == "nl") {
+                    <button type="submit" class="btn btn-primary btn-large">Lid worden</button>
+                    } else {
+                    <button type="submit" class="btn btn-primary btn-large">S'inscrire</button>
+                    }
+                </div>
+
+            }
+            </div>
+            <div class="fb-connect">
+                <form action="@Url.Action("Login", "Facebook")" method="post">
+                    @Html.Hidden("provider", "Facebook")
+
+                    <button class="btn btn-primary btn-large"><i class="icon-facebook-sign icon-fb-button"></i>@Html.LocalizedText("FacebookConnectButton")</button>
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+</div>

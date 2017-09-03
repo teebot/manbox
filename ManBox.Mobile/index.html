@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>ManBox</title>
+    <script src="scripts/jq.mobi.dist.js"></script>
+    <script src="scripts/knockout-2.2.0.js"></script>
+    <script src="scripts/knockout.mapping-latest.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+    <link href="style/jq.ui.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+
+<div id="jQUi">
+    <div id="header">
+        <a id="backButton" href="javascript:;" class="button" style="visibility: hidden; ">Back</a> 
+        <h1 id="pageTitle">manbox</h1> 
+    </div>
+
+    <div id="content">
+        <div id="main" title="Your subscription" class="panel" selected="true">
+                
+            <!----COMPOSE VIEW----->
+            <div class="row compose">
+        <div class="span2 categories">
+            <ul id="categories-navigation" class="nav nav-pills nav-stacked" data-bind="foreach: ProductsCategories">
+                <li><a data-bind="attr: { href: '#' + Title() }, text: Title"></a></li>
+            </ul>
+        </div>
+
+        <div class="span6 catalog">
+            <div id="catalog-overview">
+                <div data-bind="foreach: ProductsCategories">
+                    <a data-bind="attr: { 'id': Title }"></a>
+                    <div class="catalog-category">
+                    <h4 data-bind="text: Title"></h4>
+                    <!-- ko foreach: Products -->
+                        <div class="row catalog-product">
+                            <div class="product-image"><img data-bind="attr: { src: 'http://manbox.fr/Content/images/products/' + Reference() + '.jpg' }" src="http://manbox.fr/Content/images/tinytrans.gif")" /></div>
+                            <div class="product-description">
+                                <h5 data-bind="text: Title"></h5>
+                                <div class="price" data-bind="text: Price() + ' €'"></div>
+                                <p data-bind="text: Description"></p>
+                                
+                                <select data-bind="value: selectedQuantity, options: quantity"></select> <br />
+                                
+                                
+                                <span data-bind="visible: Models().length === 1, text: Models()[0].Name"></span>
+                                <select data-bind="visible: Models().length > 1, value: selectedModelId, options: Models, optionsText: 'Name', optionsValue: 'ModelId'"></select>
+
+                                <button class="btn btn-primary" data-bind="click: addModel">Ajouter <i class="icon-hand-right icon-white"></i></button>
+                            </div>
+                        </div>
+                    <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div> 
+                <!----END COMPOSE VIEW----->
+
+
+        </div>
+    </div>
+
+    <div id="navbar">
+       <a target="#welcome" class="icon home">Home</a>
+    </div>
+
+    <nav id="main_nav">
+        <div class='title'>Home</div>
+        <ul>
+            <li class="icon home mini"><a href="#main">Home</a></li>
+        </ul>
+    </nav>
+    <nav id="second_nav">
+        <div class='title'>Second</div>
+        <ul>
+            <li class="icon info mini"><a href="#about">About</a></li>
+        </ul>
+    </nav>
+</div><!-- END #jQUi-->
+</body>
+
+
+    <script>
+
+        var selectionModel;
+
+        // Overview
+
+        var overviewData = { "ProductsCategories": [{ "Title": "Boxers", "Products": [{ "Description": "Boxer Dim Confortable", "Models": [{ "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 1, "ProductId": 1, "Name": "S", "Reference": "Dim.Boxer.S", "ShopPrice": 5.00, "SupplierPrice": 4.00, "AmountInStock": 50 }, { "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 2, "ProductId": 1, "Name": "M", "Reference": "Dim.Boxer.M", "ShopPrice": 5.00, "SupplierPrice": 4.00, "AmountInStock": 50 }, { "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 3, "ProductId": 1, "Name": "L", "Reference": "Dim.Boxer.L", "ShopPrice": 6.00, "SupplierPrice": 4.50, "AmountInStock": 50 }], "Price": 5.00, "Title": "Boxer Dim", "Reference": "BoxerDim" }, { "Description": "Le slip classique", "Models": [{ "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 6, "ProductId": 2, "Name": "M", "Reference": "jhjjhg", "ShopPrice": 5.00, "SupplierPrice": 5.00, "AmountInStock": 50 }, { "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 7, "ProductId": 2, "Name": "L", "Reference": "jhgjhg", "ShopPrice": 5.00, "SupplierPrice": 5.00, "AmountInStock": 50 }, { "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 8, "ProductId": 2, "Name": "XL", "Reference": "hghjg", "ShopPrice": 5.00, "SupplierPrice": 5.00, "AmountInStock": 50 }], "Price": 5.00, "Title": "The slip", "Reference": "BriefHom" }] }, { "Title": "Chaussettes", "Products": [{ "Description": "Chaussettes stylées", "Models": [{ "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 4, "ProductId": 3, "Name": "39-42", "Reference": "chaussettes.39-42", "ShopPrice": 5.50, "SupplierPrice": 4.00, "AmountInStock": 50 }, { "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 5, "ProductId": 3, "Name": "43-46", "Reference": "chaskjh", "ShopPrice": 6.45, "SupplierPrice": 5.00, "AmountInStock": 60 }], "Price": 5.50, "Title": "Chaussettes INSUA", "Reference": "SocksIns" }, { "Description": "Pour le ski", "Models": [{ "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 9, "ProductId": 4, "Name": "39-42", "Reference": "rgerge", "ShopPrice": 6.50, "SupplierPrice": 5.00, "AmountInStock": 50 }, { "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 10, "ProductId": 4, "Name": "42-44", "Reference": "gerg", "ShopPrice": 7.00, "SupplierPrice": 5.00, "AmountInStock": 50 }, { "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 11, "ProductId": 4, "Name": "44-46", "Reference": "rtfref", "ShopPrice": 7.00, "SupplierPrice": 5.00, "AmountInStock": 50 }], "Price": 6.50, "Title": "Chaussettes Rossignol", "Reference": "SocksRock" }] }, { "Title": "Préservatifs", "Products": [{ "Description": "Sensations Intactes", "Models": [{ "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 12, "ProductId": 5, "Name": "Normal", "Reference": "gerge", "ShopPrice": 12.45, "SupplierPrice": 10.00, "AmountInStock": 50 }], "Price": 12.45, "Title": "Durex Love", "Reference": "DurexLove" }, { "Description": "Classics", "Models": [{ "Product": null, "SubscriptionDeliveryModels": [], "ModelId": 13, "ProductId": 6, "Name": "Normal", "Reference": "fezfz", "ShopPrice": 11.95, "SupplierPrice": 10.00, "AmountInStock": 50 }], "Price": 11.95, "Title": "Durex Classic", "Reference": "DurexClassic" }] }, { "Title": "Rasage", "Products": [] }] };
+
+        var extCatalogOverviewModel = function (data) {
+            ko.mapping.fromJS(data, {}, this);
+        
+            this.quantity = ko.observableArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+            this.selectedQuantity = ko.observable();
+            this.selectedModelId = ko.observable();
+        
+            this.addModel = function () {
+
+                $.post("http://manbox.fr/Box/AddToSubscription", { modelId: this.selectedModelId(), quantity: this.selectedQuantity() }, function (result) {
+                    if(ko.dataFor($("#subscr-selection")[0])) {  // don't bind twice
+                        ko.mapping.fromJS(result, selectionMapping, selectionModel);
+                    } else {
+                        selectionModel = ko.mapping.fromJS(result, selectionMapping);
+                        ko.applyBindings(selectionModel, $("#subscr-selection")[0]);
+                    }
+                });
+            };
+        }
+
+        var overviewMapping = {
+            'Products': {
+                create: function (options) {
+                    return new extCatalogOverviewModel(options.data);
+                }
+            }
+        };
+    
+        var catalogOverviewModel = ko.mapping.fromJS(overviewData, overviewMapping);
+        ko.applyBindings(catalogOverviewModel, $("#catalog-overview")[0]);
+        ko.applyBindings(catalogOverviewModel, $("#categories-navigation")[0]);
+
+
+        // Subscription Cart
+
+        var extSelectionModel = function (data) {
+            ko.mapping.fromJS(data, {}, this);
+
+            this.removeModel = function () {
+                $.post("http://manbox.fr/Box/RemoveFromSubscription", { modelId: data.ModelId }, function (result) {
+                    ko.mapping.fromJS(result, selectionMapping, selectionModel); 
+                });
+            };
+        }
+
+        var selectionMapping = {
+            'SelectedProducts': {
+                create: function (options) {
+                    return new extSelectionModel(options.data);
+                }
+            }
+        };
+
+        $.getJSON("http://manbox.fr/Box/GetSubscription", function (data) {
+            if(data) {
+                selectionModel = ko.mapping.fromJS(data, selectionMapping);
+                ko.applyBindings(selectionModel, $("#subscr-selection")[0]);
+            }
+        });
+    
+</script>    
+
+</html>
+

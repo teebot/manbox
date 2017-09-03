@@ -1,0 +1,108 @@
+﻿@model ManBox.Model.ViewModels.BackOffice.ShipmentDetailViewModel
+
+<a href="@Url.Action("ShipmentList")" class="btn">Back to List</a>
+<h2>Shipment Detail</h2>
+
+
+<h3>Status</h3>
+
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Shipment State</td>
+            <td>@Model.DeliveryState</td>
+        </tr>
+        <tr>
+            <td>Payment Status</td>
+            <td>@Model.DeliveryPaymentStatus</td>
+        </tr>
+        <tr>
+            <td>Preapproval Key</td>
+            <td>@if (!string.IsNullOrEmpty(Model.PayPalPreApprovalKey))
+                {
+                @Html.ActionLink(Model.PayPalPreApprovalKey, "PreapprovalDetail", "Payment", new { preapprovalKey = Model.PayPalPreApprovalKey }, null)
+                }</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>Shipping Address</h3>
+
+<table class="table table-bordered table-hover">
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>@Model.FirstName @Model.LastName</td>
+        </tr>
+        <tr>
+            <td>Street</td>
+            <td>@Model.Street</td>
+        </tr>
+        <tr>
+            <td>Postal Code</td>
+            <td>@Model.PostalCode</td>
+        </tr>
+        <tr>
+            <td>City</td>
+            <td>@Model.City</td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>@Model.Country</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>@Model.Email</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Model</td>
+            <td>Quantity ordered</td>
+            <td>Amount in stock</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.OrderedProducts)
+        { 
+            <tr>
+                <td>@m.ProductName - @m.ModelName [@m.ModelReference]</td>
+                <td>@m.Quantity</td>
+                <td>@m.AmountInStock</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+<div class="form-actions">
+    <a href="@Url.Action("ShipmentList")" class="btn">Back to List</a>
+
+    @if (Model.DeliveryPaymentStatus != CodeValues.DeliveryPaymentStatus.Paid)
+    {
+        using (Html.BeginForm("Charge", "Payment", FormMethod.Post))
+        { 
+            @Html.HiddenFor(m => m.DeliveryId)
+            <button class="btn btn-primary" type="submit">Charge and Confirm Renewed Shipment</button>
+        }
+    }
+
+    @if (Model.DeliveryState == CodeValues.DeliveryState.Processing)
+    {
+        using (Html.BeginForm("Confirm", "Payment", FormMethod.Post))
+        { 
+            @Html.HiddenFor(m => m.DeliveryId)
+            <button class="btn btn-primary" type="submit">Confirm Processing Shipment as Sent</button>   
+        }
+    }
+    <a href="@Url.Action("Letter", new { id = Model.DeliveryId })" class="btn btn-primary">Print Letter</a>
+</div>
+
+
+

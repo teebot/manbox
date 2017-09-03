@@ -1,0 +1,22 @@
+﻿<div class="container">
+
+<div class="row sheet">
+    <div class="span12">
+        <h2>@Html.LocalizedText("ThankYouTitle")</h2>
+
+        <p>
+            @Html.LocalizedText("ThankYouModificationText")
+        </p>
+
+        <p>@Html.LocalizedText("ThankYouText2")</p>
+
+        <p>@Html.LocalizedText("ThankYouText3")
+        </p>
+
+        @*<img src="~/Content/images/obama_thankyou.jpg" />*@
+        <hr />
+
+        <a href="@Url.Action("Compose", "Box")" class="btn btn-primary">@Html.LocalizedText("BackBtn")</a>
+    </div>
+</div>
+</div>

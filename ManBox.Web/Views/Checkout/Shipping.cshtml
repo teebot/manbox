@@ -1,0 +1,391 @@
+﻿@model ManBox.Model.ViewModels.CheckoutShippingViewModel
+
+<div class="container">
+<div class="row checkout sheet">
+    <div class="span5 shipping">
+        <h4>@Html.LocalizedText("YourDataTitle")</h4>
+
+        @if (!this.User.Identity.IsAuthenticated)
+        {
+            <a data-track-action="alreadyMember" class="already-member" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-user"></i> @Html.LocalizedText("AlreadyMember")</a>
+        }
+
+        @using (Html.BeginForm("SaveShippingInfo", "Checkout", FormMethod.Post, new { @class = "checkout-form" }))
+        {
+            @Html.HiddenFor(m => m.SubscriptionToken)
+                
+            if (!this.User.Identity.IsAuthenticated)
+            {
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+            }
+                
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>    
+
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.LastName)
+
+                @Html.TextBoxFor(m => m.LastName, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.Street)
+                @Html.TextAreaFor(m => m.Street, new { @class = "input-huge" })
+                @Html.ValidationMessageFor(m => m.Street)
+            </div>   
+
+
+                
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.City)
+
+
+                @Html.TextBoxFor(m => m.City, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.City)
+            </div>   
+
+                
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.PostalCode)
+
+
+                @Html.TextBoxFor(m => m.PostalCode, new { @class = "input-mini" })
+                @Html.ValidationMessageFor(m => m.PostalCode)
+            </div>
+                
+            if (ManBox.Web.ManBoxHostInfo.Instance.HostCountryId.Value != AppConstants.Countries.BE)
+            {
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.Province)
+                @Html.TextBoxFor(m => m.Province, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.Province)
+            </div> 
+            }
+                
+                
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.CountryId)
+                @Html.DropDownListFor(m => m.CountryId, Model.CountryList, new { @class = "input-medium" })
+            </div> 
+                
+            <div class="checkout-control">
+                @Html.LabelFor(m => m.Phone)
+                @Html.TextBoxFor(m => m.Phone, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.Phone)
+            </div>
+            
+            
+            <div class="checkout-control payment-methods">
+                <label class="radio inline">
+                    <input type="radio" name="PaymentMethod" value="CreditCard" checked>
+                    <img src="~/Content/images/mastercard.png" alt="mastercard" />
+                    <img src="~/Content/images/visa.png" alt="visa" />
+                </label>
+                <label class="radio inline">
+                    <input type="radio" name="PaymentMethod" value="PayPal">
+                    <img src="~/Content/images/paypal.png" alt="paypal"/>
+                </label>
+            </div>
+            
+            <div class="checkout-control">
+                <div class="accept-terms">
+                    <label class="checkbox inline">
+                        @Html.CheckBoxFor(m => m.AgreeTerms)
+                    
+                    @Html.LocalizedText("CheckoutAcceptConditions", new[] { Url.Action("Conditions", "About")})<br />
+                    @Html.ValidationMessageFor(m => m.AgreeTerms)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="clearfix checkout-actions">
+                <a data-track-action="backFromCheckout" href="@Url.Action("Size", "Checkout")" class="btn btn-small pull-left btn-back"><i class="icon-arrow-left"></i> @Html.LocalizedText("BackBtn")</a>
+                <button class="btn btn-success btn-large pull-right paymill-subscribe-btn" type="submit">@Html.LocalizedText("Next") <i class="icon-circle-arrow-right icon-white"></i></button>
+                <button type="submit" class="pull-right paypal-subscribe-btn" style="border:0"><img src="@Url.LocalizedImage("paypal_subscribe.gif")" alt="subscribe with paypal"/></button>
+            </div>
+        }
+    </div>
+
+    <div class="span5 payment">
+        <h4>@Html.LocalizedText("YourDataTitle")</h4>
+        <div class="payment-errors"></div>
+
+        <form id="payment-form" action="@Url.Action("PaymillPay")" method="POST" class="checkout-form">
+            <div class="pay-with">
+                @Html.LocalizedText("CheckoutCCPayWith") 
+                <img src="~/Content/images/mastercard.png" alt="mastercard" />
+                <img src="~/Content/images/visa.png" alt="visa" />
+            </div>
+
+            <input class="card-amount-int" type="hidden" value="@Model.TotalInt" />
+            <input class="card-currency" type="hidden" value="EUR" />
+
+            <div class="checkout-control">
+                <label>@Html.LocalizedText("CheckoutCCHolderName")</label>
+                <input class="card-holdername" type="text" size="4" />
+            </div>
+
+            <div class="checkout-control">
+                <label>@Html.LocalizedText("CheckoutCCCardNumber")</label>
+                <input class="card-number" type="text" size="20" />
+            </div>
+
+            <div class="checkout-control">
+                <label>@Html.LocalizedText("CheckoutCCExpiryDate")</label>
+                @Html.DropDownList("card-expiry-month", Model.CCMonthsList, new { @class = "input-small" })
+                <span></span>
+                @Html.DropDownList("card-expiry-year", Model.CCYearsList, new { @class = "input-small" })
+            </div>
+
+            <div class="checkout-control">
+                <label class="verif-code-info"><span class="help">@Html.LocalizedText("CheckoutCCVerificationCode") <i class="icon-info-sign"></i></span></label>
+                <input class="card-cvc input-small" type="text" size="4" />
+            </div>
+
+            <div class="clearfix checkout-actions">
+                <button class="btn btn-success btn-large" type="submit">@Html.LocalizedText("PayBtn")</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="span4 checkout-secondary">
+        <h4>@Html.LocalizedText("YourOrder")</h4>
+
+        <div id="subscr-selection" class="subscr-checkout">
+            <div class="subscr-product subscr-pack" data-bind="if: Pack.Title">
+                <div class="row selection-item">
+                    <div class="selection-picture"><img src="@Url.Content("~/Content/images/pack_icon.jpg")" /></div>
+                    <div class="selection-label">
+                        <div class="title"><span data-bind="text: Pack.Title"></span></div>
+                        <div class="price" data-bind="text: Pack.Price"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="subscr-product" data-bind="foreach: SelectedProducts, visible: SelectedProducts() && SelectedProducts().length > 0">
+                <div class="row selection-item">
+                    <div class="selection-picture">
+                        <img src="@Url.Content("~/Content/images/tinytrans.gif")" data-bind="attr: { src: '@Url.CdnPath()/products/' + ProductReference() + '.jpg' }" /></div>
+                    <div class="selection-label">
+                        <div class="title"><span data-bind="text: 'x' + Quantity()"></span>&nbsp;<span data-bind="text: ProductTitle"></span></div>
+                        <div class="cart-model" data-bind="text: ModelName"></div>
+                        <div class="price" data-bind="text: SubTotalPrice()"></div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="table table-hover">
+                <tr>
+                    <td>@Html.LocalizedText("CartSubTotal")</td>
+                    <td class="right-align" data-bind="text: ItemsTotal"></td>
+                </tr>
+                <tr class="green">
+                    <td class="delivery"><span class="help">@Html.LocalizedText("CartShippingFee") <i class="icon-info-sign"></i></span></td>
+                    <td class="right-align" data-bind="text: ShippingFee">0</td>
+                </tr>
+                <tr data-bind="visible: CouponAmount() !== ''" class="green">
+                    <td class="delivery"><span data-bind="text: CouponLabel"></span></td>
+                    <td class="right-align" data-bind="text: CouponAmount">0</td>
+                </tr>
+                <tr class="total-amount">
+                    <td>@Html.LocalizedText("CartTotal")</td>
+                    <td class="right-align" data-bind="text: SelectionTotal"></td>
+                </tr>
+            </table>
+
+
+            <a data-track-action="haveCoupon" data-bind="visible: CouponAmount() === ''" href="#" class="show-coupon">@Html.LocalizedText("CouponShowLink")</a>
+            <form data-bind="visible: CouponAmount() === ''" id="coupon-form" method="post">
+                <input class="input-medium" placeholder="code" data-bind="value: couponCode" />
+                <button class="btn btn-small" data-bind="click: applyCoupon" type="submit">@Html.LocalizedText("CouponApplyBtn")</button>
+            </form>
+        </div>
+
+        <div class="delivery-info">
+            <table class="table table-hover table-condensed">
+                <tr>
+                    <td>@Html.LocalizedText("CheckoutFrequence")</td>
+                    <td>@Html.LocalizedText("CheckoutFrequenceValue")</td>
+                </tr>
+
+                <tr class="success">
+                    <td><i class="icon-flag"></i> @Html.LocalizedText("FirstDelivery")</td>
+                    <td>@Html.LocalizedText("ShippedWithinWeek") </td>
+
+                </tr>
+                <tr class="info">
+                    <td><i class="icon-flag"></i> @Html.LocalizedText("SecondDelivery")</td>
+                    <td>@Model.NextDelivery</td>
+                </tr>
+            </table>
+
+            
+        </div>
+
+    </div>
+
+    <div class="span3">
+        <div class="trust-column">
+            @Html.LocalizedText("ShippingTrustInfoHtml", new[] { @Url.Action("Contact", "Account") })
+        </div>
+        
+
+        <div class="trust-logo">
+            <a data-track-action="trustLogo" href="https://www.paymill.com/nl-be/" target="_blank"><img src="@Url.Content("~/Content/images/paymill.jpg")" alt="paymill verified" /></a>
+            <a data-track-action="trustLogo" href="https://www.paypal.com/webapps/mpp/paypal-popup" target="_blank"><img src="@Url.Content("~/Content/images/paypal_verified.jpg")" alt="paypal verified" /></a>
+            <a data-track-action="trustLogo" href="http://www.instantssl.com/wildcard-ssl.html" target="_blank"><img src="@Url.Content("~/Content/images/comodo-site-secure.jpg")" alt="comodo ssl verified" /></a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+@section modals {
+    @Html.Partial("_DeliveryModal")
+    @Html.Partial("_VerifCodeModal")
+}
+
+
+<!-- Conversion Pixel - BE_CozyPixel_Manbox_conversion_checkout_shipping - DO NOT MODIFY -->
+<img src="https://secure.adnxs.com/px?id=135385&seg=188926,188931,188965,188969&order_id=@(Model.Token)&value=@(Model.TotalInt)&t=2" width="1" height="1" />
+<!-- End of Conversion Pixel -->
+
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/checkout")
+
+<script type="text/javascript">
+    var PAYMILL_PUBLIC_KEY = '@Model.PaymillPublicKey';
+
+    var Paymill_field_invalid_card_number = "@Html.LocalizedText("Paymill_field_invalid_card_number")";
+    var Paymill_field_invalid_card_exp = "@Html.LocalizedText("Paymill_field_invalid_card_exp")";
+    var Paymill_field_invalid_card_cvc = "@Html.LocalizedText("Paymill_field_invalid_card_cvc")";
+
+    var saveShippingUrl = "@Url.Action("SaveShippingInfoCreditCard")";
+</script>
+
+    <script>
+        $(document).ready(function () {
+            $("input[name='PaymentMethod']").change(function()
+                {
+                    var payment = $(this).val();
+                    if(payment === "PayPal")
+                    {
+                        $('.paymill-subscribe-btn').hide();
+                        $('.paypal-subscribe-btn').show();
+                    } 
+                    else
+                    {
+                        $('.paymill-subscribe-btn').show();
+                        $('.paypal-subscribe-btn').hide();
+                    }
+            });
+
+            $('.paymill-subscribe-btn').click(
+                function(event){
+                    event.preventDefault();
+                    var form = $('form.checkout-form');
+                    if(form.valid()) 
+                    {
+                        $.post(saveShippingUrl, form.serialize(),
+                            
+                            function (data) {
+                                if(data.success)
+                                {
+                                    $('.checkout .shipping').fadeOut(function() {
+                                        $('.checkout .payment').fadeIn();
+                                    });
+                                } 
+                                else if(data.alreadyMember) 
+                                {
+                                    alert('you\'re already a registered user. Please login first.');
+                                }
+                            });
+                    }
+                }
+            );
+        });
+    </script>
+
+
+
+
+
+<script type="text/javascript" src="https://bridge.paymill.com/"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#payment-form").submit(function (event) {
+            // Deactivate submit button to avoid further clicks
+            $('.submit-button').attr("disabled", "disabled");
+
+            paymill.config('3ds_cancel_label', "@Html.LocalizedText("Paymill_field_cancel_3ds")");
+
+            paymill.createToken({
+                number: $('.card-number').val(),   // required, without spaces and hyphens
+                exp_month: $('select[name="card-expiry-month"]').val(),   // required
+                exp_year: $('select[name="card-expiry-year"]').val(),     // required, four digits e.g. "2016"
+                cvc: $('.card-cvc').val(),                  // required
+                amount_int: "@Model.TotalInt",     // required, integer e.g. "15" for 0.15 EUR
+                currency: "EUR", // required, ISO 4217 e.g. "EUR" or "GBP"
+                cardholder: $('.card-holdername').val()     // optional
+            }, PaymillResponseHandler);                   // this function is described below
+
+            return false;
+        });
+    });
+
+    function PaymillResponseHandler(error, result) {
+        if (error) {
+
+            var friendlyerror = '';
+            // Shows the error above the form
+            // translate
+            switch (error.apierror)
+            {
+                case 'field_invalid_card_number':
+                    friendlyerror = Paymill_field_invalid_card_number;
+                    break;
+                case 'field_invalid_card_exp':
+                    friendlyerror = Paymill_field_invalid_card_exp;
+                    break;
+                case 'field_invalid_card_cvc':
+                    friendlyerror = Paymill_field_invalid_card_cvc;
+                    break;
+            }
+
+            // fallback
+            if(!friendlyerror)
+            {
+                friendlyerror = error.apierror;
+            }
+
+            $(".payment-errors").text(friendlyerror);
+            $(".submit-button").removeAttr("disabled");
+        } else {
+            var form = $("#payment-form");
+            // Output token
+            var token = result.token;
+            // Insert token into form in order to submit to server
+            form.append("<input type='hidden' name='paymillToken' value='" + token + "'/>");
+            form.get(0).submit();
+        }
+    }
+</script>
+}

@@ -1,0 +1,27 @@
+"C:\Program Files\7-Zip\7z.exe" a -tzip "C:\Users\Thibaut\Desktop\ManBox.Mobile_%time:~0,2%%time:~3,2%%time:~6,2%_%date:~-10,2%%date:~-7,2%%date:~-4,4%.zip" "C:\Users\Thibaut\Dropbox\DEV\ManBox\ManBox.Mobile" -r -x!cordova.js -x!build.bat
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

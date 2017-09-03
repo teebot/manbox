@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ManBox.Common.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EmailFromAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">support@manbox.fr</Value>
+    </Setting>
+    <Setting Name="EmailFromName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ManBox</Value>
+    </Setting>
+    <Setting Name="EmailTemplatesPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\Thibaut\Dropbox\DEV\ManBox\trunk\MailTemplates\</Value>
+    </Setting>
+    <Setting Name="MandrillApiKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">8c82147f-005e-4c6d-9683-5d40ceee79df</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

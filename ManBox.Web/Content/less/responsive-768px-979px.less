@@ -1,0 +1,115 @@
+//
+// Responsive: Tablet to desktop
+// --------------------------------------------------
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+  // Fixed grid
+  #grid > .core(@gridColumnWidth768, @gridGutterWidth768);
+
+  // Fluid grid
+  #grid > .fluid(@fluidGridColumnWidth768, @fluidGridGutterWidth768);
+
+  // Input grid
+  #grid > .input(@gridColumnWidth768, @gridGutterWidth768);
+
+  // No need to reset .thumbnails here since it's the same @gridGutterWidth
+
+    #categories-navigation {
+        width: 114px !important;
+
+        ul li a {
+            width:111px !important;
+            font-size:12px;
+        }
+    }
+
+    .catalog #catalog-overview .catalog-category .catalog-product {
+          padding-bottom: 24px;
+
+        .product-image {
+            width: 132px;
+        }
+    }
+	
+    #subscr-selection {
+        width:212px;
+    }
+
+    .landing-steps-wrapper {
+        .landing-step {
+            width: 230px;
+        }
+
+        .step-number {
+            display:none;
+        }
+    }
+
+
+    .landing-wrapper {
+        .landing {
+            width: 100%;
+
+            h1 {
+                padding:12px 24px;
+                font-size: 32px;
+            }
+
+            img {
+                max-width: 100% !important;
+            }
+
+            .startnow {
+                position: static;
+                margin: 12px auto;
+            }
+        }
+        /* end landing */
+    }
+
+    .checkout { 
+		
+		.checkout-control {
+			float:none;
+		}
+
+		.checkout-actions {
+			margin-top: 0;
+			width:100%;
+		}
+	} /* end checkout */
+
+	.trust-info {
+		width:140px;
+	}
+
+
+    .skip-packs {
+        display:block;
+    }
+
+    #packs {
+
+        .pack-col {
+            width:182px;
+            margin-right: 4px !important;
+
+            .pack-content {
+                width: 182px;
+                padding:12px 0 120px 0;
+            }
+
+            .pack-bottom {
+                width: 100%;
+
+                .deal {
+                    width:auto;
+                }
+            }
+        } /* end pack-col */
+    } /* end packs */
+
+
+} /* end media query */

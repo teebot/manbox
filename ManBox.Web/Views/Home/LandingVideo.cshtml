@@ -1,0 +1,155 @@
+﻿@model ManBox.Model.ViewModels.LandingPageViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutMinimal.cshtml";
+}
+
+
+
+<div class="landing">
+
+    @if (this.UICulture == AppConstants.Languages.IsoFrench) { 
+        <img src="@Url.Content("~/Content/images/video_capture_1_play.jpg")" alt="what is manbox" />
+    } else{
+        <img src="@Url.Content("~/Content/images/video_capture_1.jpg")" alt="what is manbox" />
+    }
+    
+    <h1>@Html.LocalizedText("LandingHeaderTitle")</h1>
+    <h2>@Html.LocalizedText("LandingHeader2Title")</h2>
+    <div class="startnow">
+        <a class="btn btn-success btn-large" href="@Url.Action("Compose", "Box")">@Html.LocalizedText("LandingCreateBoxBtn") <i class="icon-circle-arrow-right icon-white"></i></a>
+    </div>
+</div>
+
+<div class="landing-brands">
+    <a href="@Url.Action("Compose", "Box")"><img src="~/Content/images/landing-brands.png" /></a>
+</div>
+
+<div class="row landing-secondary">
+    <div class="span8">
+        <div class="point">
+            <div class="point-icon">
+                <i class="icon-download-alt"></i>
+            </div>
+            <div class="point-text">
+                <h4>@Html.LocalizedText("LandingSecondary1Title")</h4>
+                <p>@Html.LocalizedText("LandingSecondary1Content", new[] { @Url.Action("Compose", "Box") })</p>
+            </div>
+        </div>
+        <div class="point">
+            <div class="point-icon">
+                <i class="icon-time"></i>
+            </div>
+            <div class="point-text">
+                <h4>@Html.LocalizedText("LandingSecondary2Title")</h4>
+                <p>@Html.LocalizedText("LandingSecondary2Content", new[] { @Url.Action("Compose", "Box") })</p>
+            </div>
+        </div>
+        <div class="point">
+            <div class="point-icon">
+                <i class="icon-thumbs-up"></i>
+            </div>
+            <div class="point-text">
+                <h4>@Html.LocalizedText("LandingSecondary3Title")</h4>
+                <p>@Html.LocalizedText("LandingSecondary3Content", new[] { @Url.Action("Compose", "Box") })</p>
+            </div>
+        </div>
+
+        <a class="btn btn-success btn-large" href="@Url.Action("Compose", "Box")">@Html.LocalizedText("LandingCreateBoxBtn") <i class="icon-circle-arrow-right icon-white"></i></a>
+    </div>
+    <div class="span4 seal">
+        <div class="fb-like-box" data-href="http://www.facebook.com/pages/Manbox/100147390164476" data-border-color="#87B7CF" data-width="288" data-show-faces="true" data-stream="false" data-header="false"></div>
+        <br />
+        <a href="https://twitter.com/manboxTeam" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @@manboxTeam</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <img src="~/Content/images/chuckapproved.png" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="span12 blog-posts">
+        @if (Model.BlogFeed != null && Model.BlogFeed.Posts != null)
+        {
+            <h3>@Html.LocalizedText("BlogPostsTitle")</h3>
+            foreach (var d in Model.BlogFeed.Posts)
+            { 
+                <ul>
+                    <li>
+                        <a class="blog-title" href="@d.Url">@d.Title</a>
+                        <p><a href="@d.Url">@d.Excerpt</a></p>
+                    </li>
+                </ul>
+            }
+        }
+    </div>
+</div>
+
+@section scripts {
+<script>
+
+    // add YT async
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+    $(document).ready(function () {
+        $('.ld.fr .landing img').click(function () {
+            $('.landing').append('<iframe id="manbox-video" type="text/html" src="http://www.youtube.com/embed/ZLDipwpDDlQ?rel=0&showinfo=0&vq=hd720&enablejsapi=1&color=white&origin=@ViewBag.YoutubeOrigin" frameborder="0" allowfullscreen></iframe>');
+            resizeVideo();
+            $(this).hide();
+            loadYTAPI();
+        });
+
+        // other page events
+        $('.landing-secondary .point').click(function () { window.location.href = "@Url.Action("Compose", "Box")" });
+
+    });
+
+
+    function resizeVideo() {
+        // resize video 
+        var vPlayer = $('#manbox-video');
+        var aspectRatio = 9 / 16;
+
+        function resizeVideoJS() {
+            var width = $('#manbox-video').parent().innerWidth();
+            var height = width * aspectRatio;
+
+            $('#manbox-video').attr("width", width);
+            $('#manbox-video').attr("height", height);
+            $('.landing').css("height", height);
+        }
+
+        resizeVideoJS();
+        window.onresize = resizeVideoJS;
+    }
+
+
+    // youtube api
+
+    function loadYTAPI() {
+        var player = new YT.Player('manbox-video', {
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+
+        function onPlayerReady(event) {
+            event.target.playVideo();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.PAUSED) {
+                $('.startnow, .landing h1, .landing h2').fadeIn(500);
+            }
+
+            if (event.data == YT.PlayerState.PLAYING) {
+                $('.startnow, .landing h1, .landing h2').fadeOut(500);
+            }
+        }
+    }
+</script>        
+}

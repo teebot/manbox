@@ -1,0 +1,146 @@
+﻿@model GiftPacksViewModel
+
+@{
+    ViewBag.Title = "Gift Packs";
+}
+
+<div class="container">
+    <div class="row">
+        <div id="gifts" class="span12 gift-packs sheet">
+            <div class="presentation">
+                <h2>@Html.LocalizedText("GiftsHeaderTitle")</h2>
+
+                <p>
+                    @Html.LocalizedText("GiftsHeaderParagraph")
+                </p>
+
+                @Html.LocalizedText("GiftsHeaderList")
+            </div>
+
+            @foreach (var gp in Model.GiftPacks)
+            {
+                <div class="gift-pack gift-pack-@gp.PackId">
+                    <div class="gift-title">
+                        <h3>@gp.Title</h3>
+                        <div class="price">
+                            @gp.Price.ToCurrency()
+                        </div>
+                    </div>
+
+                    <div class="gift-illustration">
+                        <img src="@Url.CdnPath()/packs/pack-@(gp.PackId).jpg" alt="gift pack pic" />
+                    </div>
+
+                    <div class="gift-presentation">
+                        <p>@gp.Description</p>
+                    </div>
+
+                    <div class="gift-preview">
+                        @foreach (var p in gp.Products)
+                        {
+                            <div class="gift-product-thumbs">
+                                <img src="@Url.CdnPath()/products/@(p.Reference)_S.jpg" alt="product pic" />
+                            </div>
+                        }
+                        <div class="gift-product-thumbs voucher-thumb"><i class="icon-money"></i> @gp.GiftVoucherValue.ToCurrency()</div>
+                    </div>
+
+                    <div class="gift-bottom">
+                        <a class="see-detail">@Html.LocalizedText("GiftsDetailBtn")&nbsp;&nbsp;<i class="icon-angle-right"></i></a>
+
+                        @using (Html.BeginForm("AddGift", "Box", FormMethod.Post))
+                        {
+                            @Html.Hidden("giftPackId", gp.PackId)
+                            <button type="submit" class="btn btn-large btn-success">@Html.LocalizedText("GiftsOfferBtn") <i class="icon-shopping-cart icon-white"></i></button>
+                            <div class="pack-free-shipping"><i class="icon-truck"></i> @Html.LocalizedText("FreeShipping")</div>
+                        }
+                    </div>
+                </div>
+                <div class="gift-pack gift-pack-back">
+                    <div class="gift-title">
+                        <h3>@gp.Title</h3>
+                        <div class="price">
+                            @gp.Price.ToCurrency()
+                        </div>
+                    </div>
+
+                    <div class="gift-content">
+                        @foreach (var p in gp.Products)
+                        {
+                            <div class="gift-product">
+                                <span class="gift-product-quantity">@p.Quantity x </span><img src="@Url.CdnPath()/products/@(p.Reference)_S.jpg" alt="product pic" />
+                                <span class="gift-product-title">@p.Title</span>
+                            </div>
+                        }
+
+                        <div class="gift-voucher">@Html.LocalizedText("GiftsIncludingVoucher") <strong>@gp.GiftVoucherValue.ToCurrency()</strong></div>
+
+                        <div class="gift-bottom">
+                            @using (Html.BeginForm("AddGift", "Box", FormMethod.Post))
+                            {
+                                @Html.Hidden("giftPackId", gp.PackId)
+                                <button type="submit" class="btn btn-large btn-success">@Html.LocalizedText("GiftsOfferBtn") <i class="icon-shopping-cart icon-white"></i></button>
+                                <div class="pack-free-shipping"><i class="icon-truck"></i> @Html.LocalizedText("FreeShipping")</div>
+                            }
+                        </div>
+                        <a class="back-to-front"><i class="icon-angle-left"></i>&nbsp;&nbsp;@Html.LocalizedText("BackBtn")</a>
+                    </div>
+                </div>
+            }
+
+            <div style="clear:both"></div>
+            <div id="faq">
+                @Html.LocalizedText("GiftsFaq")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@if (this.UICulture == AppConstants.Languages.IsoFrench)
+{
+    <div id="giftsInfoModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="giftsInfoModalLabel" aria-hidden="true">
+        <img src="@Url.LocalizedImage("giftInfo.png")" alt="giftInfo" />
+    </div>
+}
+
+
+@section scripts{
+    <script src="@Url.Content("~/Scripts/jquery.flip.min.js")"></script>
+
+    <script>
+
+        var revert = function () {
+            $('.back-to-front, .gift-title, .see-detail, .gift-illustration').on('click', function () {
+                $(this).parents('.gift-pack').revertFlip();
+            });
+        };
+
+        var enableFlip = function () {
+            $('.see-detail, .gift-illustration, .gift-title').click(function () {
+                $(this).parents('.gift-pack').flip({
+                    direction: 'lr',
+                    content: $(this).parents('.gift-pack').next('.gift-pack-back'),
+                    color: '#ffffff',
+                    speed: 200,
+                    onEnd: revert
+                })
+            });
+        };
+
+        enableFlip();
+    </script>
+
+    @if (this.UICulture == AppConstants.Languages.IsoFrench)
+    {
+
+        <script>
+            $(document).ready(function () {
+                $('#giftsInfoModal').modal();
+                $('#giftsInfoModal').click(function () {
+                    $('#giftsInfoModal').modal('hide');
+                });
+            });
+        </script>
+    }
+}

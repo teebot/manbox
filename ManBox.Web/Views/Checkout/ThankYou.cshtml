@@ -1,0 +1,40 @@
+﻿@model ManBox.Model.ViewModels.CheckoutShippingViewModel
+
+<div class="container">
+
+<div class="row sheet">
+    <div class="span12">
+        <h2>@Html.LocalizedText("ThankYouTitle") @Model.FirstName</h2>
+
+        <p>
+            @Html.LocalizedText("ThankYouText")
+        </p>
+
+        <p>
+            @Html.LocalizedText("ThankYouText2")
+        </p>
+
+        <p>
+            @Html.LocalizedText("ThankYouText3")
+        </p>
+
+        <br /><br /><br />
+        <img src="~/Content/images/obama_thankyou.jpg" />
+        <hr />
+
+        <a href="@Url.Action("Compose", "Box")" class="btn btn-primary">@Html.LocalizedText("BackBtn")</a>
+    </div>
+</div>
+</div>
+
+<!-- Conversion Pixel - BE_CozyPixel_Manbox_conversion_checkout_confirmation - DO NOT MODIFY -->
+<img src="https://secure.adnxs.com/px?id=135386&seg=188926,188931,188965,188969&order_id=@(Model.Token)&value=@(Model.TotalInt)&t=2" width="1" height="1" />
+<!-- End of Conversion Pixel -->
+
+
+@section scripts {
+    @*Perfect Audience conversion*@
+    <script>
+        _pa.track('Subscribed');
+    </script>
+    }

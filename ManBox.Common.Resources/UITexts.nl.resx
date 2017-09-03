@@ -1,0 +1,1167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddToCart" xml:space="preserve">
+    <value>Kiezen</value>
+  </data>
+  <data name="AlreadyMember" xml:space="preserve">
+    <value>Reeds lid?</value>
+  </data>
+  <data name="Authenticate" xml:space="preserve">
+    <value>Inloggen</value>
+  </data>
+  <data name="BackBtn" xml:space="preserve">
+    <value>Terug</value>
+  </data>
+  <data name="CartCancelModifBtn" xml:space="preserve">
+    <value>Wijzigingen annuleren</value>
+  </data>
+  <data name="CartCheckoutBtn" xml:space="preserve">
+    <value>Afrekenen </value>
+  </data>
+  <data name="CartEmptyNotif" xml:space="preserve">
+    <value>Kies nu de producten die je wenst. Na drie maanden zullen we bekijken wat je aan je selectie wenst te veranderen.</value>
+  </data>
+  <data name="CartMobileSelectionBtn" xml:space="preserve">
+    <value>Naar je selectie</value>
+  </data>
+  <data name="CartModificationNotif" xml:space="preserve">
+    <value>Indien je dit wenst, kan je de inhoud van je abonnement aanpassen De volgende levering vindt plaats op  </value>
+  </data>
+  <data name="CartModifyBtn" xml:space="preserve">
+    <value>Mijn ManBox wijzigen</value>
+  </data>
+  <data name="CartShippingFee" xml:space="preserve">
+    <value>Verzendkosten</value>
+  </data>
+  <data name="CartSubTotal" xml:space="preserve">
+    <value>Subtotaal</value>
+  </data>
+  <data name="CartTotal" xml:space="preserve">
+    <value>Totaal</value>
+  </data>
+  <data name="CheckoutAlreadyMemberMessage" xml:space="preserve">
+    <value>Je bent reeds geregistreerd. Gelieve in te loggen om je abonnement wijzigen.</value>
+  </data>
+  <data name="CheckoutValidationFailedMessage" xml:space="preserve">
+    <value>Er is een probleem met de ingevulde gegevens.</value>
+  </data>
+  <data name="CloseBtn" xml:space="preserve">
+    <value>Sluiten</value>
+  </data>
+  <data name="ComposeBasicsTitle" xml:space="preserve">
+    <value>De basics</value>
+  </data>
+  <data name="ComposeSelectionTitle" xml:space="preserve">
+    <value>Jouw selectie</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="ContactFormMissingInfo" xml:space="preserve">
+    <value>Je contactgegevens zijn niet volledig.</value>
+  </data>
+  <data name="ContactFormThx" xml:space="preserve">
+    <value>Bedankt voor je bericht.</value>
+  </data>
+  <data name="ContactFrom" xml:space="preserve">
+    <value>Van</value>
+  </data>
+  <data name="ContactSendBtn" xml:space="preserve">
+    <value>Verzenden</value>
+  </data>
+  <data name="ContactUs" xml:space="preserve">
+    <value>Contacteer ManBox</value>
+  </data>
+  <data name="CountryBE" xml:space="preserve">
+    <value>België</value>
+  </data>
+  <data name="CountryFR" xml:space="preserve">
+    <value>Frankrijk</value>
+  </data>
+  <data name="CountryNL" xml:space="preserve">
+    <value>Nederland</value>
+  </data>
+  <data name="DeliveryModalBodyHtml" xml:space="preserve">
+    <value>&lt;h4&gt;Aflevering&lt;/h4&gt;
+        &lt;p&gt;
+            Levering geschiedt via het postkantoor, in een gewatteerde envelop die past in de meeste mailboxen.
+			De kosten zijn € 3 voor orders van minder dan € 29. 
+        &lt;/p&gt;
+
+        &lt;h4&gt;Retour&lt;/h4&gt;
+        &lt;p&gt;
+            U heeft 30 dagen de tijd om uw bestelling terug te keren geheel of gedeeltelijk.
+			Wij verzenden het pakket per post voor de prijs van 1 of 2 stempels alleen (afhankelijk van uw bestelling).
+        &lt;/p&gt;</value>
+  </data>
+  <data name="DeliveryModalTitle" xml:space="preserve">
+    <value>Aflevering</value>
+  </data>
+  <data name="FirstDelivery" xml:space="preserve">
+    <value>1e aflevering</value>
+  </data>
+  <data name="Here" xml:space="preserve">
+    <value>hier</value>
+  </data>
+  <data name="HowItWorksTitle" xml:space="preserve">
+    <value>Hoe werkt het?</value>
+  </data>
+  <data name="LandingCreateBoxBtn" xml:space="preserve">
+    <value>Stel je ManBox samen </value>
+  </data>
+  <data name="LandingExistingCustomersMayLogin" xml:space="preserve">
+    <value>Al lid? Je kan nu inloggen</value>
+  </data>
+  <data name="LandingFollowUsOn" xml:space="preserve">
+    <value>Of volg ons op</value>
+  </data>
+  <data name="LandingNotifyMe" xml:space="preserve">
+    <value>Inschrijven</value>
+  </data>
+  <data name="SubscribeSuccess" xml:space="preserve">
+    <value>Bedankt voor je inschriving!</value>
+  </data>
+  <data name="LandingSoonSubtitle" xml:space="preserve">
+    <value>We zijn snel weer terug. Laat ons jouw e-mail te worden gesteld van de heropening.</value>
+  </data>
+  <data name="LandingSoonTitle" xml:space="preserve">
+    <value>We passen onze stock aan. Bedankt voor je geduld!</value>
+  </data>
+  <data name="LoginFailMessage" xml:space="preserve">
+    <value>We kunnen niet je identificeren. Controleer je gegevens a.u.b.</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Uitloggen</value>
+  </data>
+  <data name="ManBoxDescTag" xml:space="preserve">
+    <value>Boxers, sokken, t-shirts,...  elke 3 maanden aan huis geleverd</value>
+  </data>
+  <data name="ManBoxTitleTag" xml:space="preserve">
+    <value>ManBox - Boxers, sokken, t-shirts,...  elke 3 maanden aan huis geleverd</value>
+  </data>
+  <data name="ModelSize" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="MoreDetail" xml:space="preserve">
+    <value>Bekijk Artikel</value>
+  </data>
+  <data name="NotSubscribedYet" xml:space="preserve">
+    <value>Lid worden?</value>
+  </data>
+  <data name="PayBtn" xml:space="preserve">
+    <value>Betalen</value>
+  </data>
+  <data name="PayPalManBoxSubscription" xml:space="preserve">
+    <value>ManBox abonnement</value>
+  </data>
+  <data name="PayPalRedirectingMsg" xml:space="preserve">
+    <value>Je wordt doorverwezen naar PayPal</value>
+  </data>
+  <data name="PrivacyTerms" xml:space="preserve">
+    <value>Privacy Statement</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+    <value>Aantal</value>
+  </data>
+  <data name="RegisterAlreadyMember" xml:space="preserve">
+    <value>Er is een probleem met je registratie. Als je al lid bent, gelieve je wachtwoord te verifiëren.</value>
+  </data>
+  <data name="SecondDelivery" xml:space="preserve">
+    <value>2e aflevering</value>
+  </data>
+  <data name="ShippedWithinWeek" xml:space="preserve">
+    <value>Binnen 7 werkdagen</value>
+  </data>
+  <data name="ShippingTrustInfoHtml" xml:space="preserve">
+    <value>&lt;div class="trust-info"&gt;
+            &lt;h3&gt;&lt;i class="icon-check"&gt;&lt;/i&gt; Tevreden of geld terug&lt;/h3&gt;
+            &lt;p&gt;
+               Een artikel bevalt je niet? Je hebt &lt;strong&gt;30 dagen&lt;/strong&gt; de tijd om het ons terug te sturen
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class="trust-info"&gt;
+            &lt;h3&gt;&lt;i class="icon-check"&gt;&lt;/i&gt; Van gedachte veranderd?&lt;/h3&gt;
+            &lt;p&gt;
+                Geen probleem, dat gebeurt wel eens. Je kan je abonnement op elk ogenblik zonder kosten annuleren.
+            &lt;/p&gt;
+        &lt;/div&gt;
+
+        &lt;div class="trust-info"&gt;
+            &lt;h3&gt;&lt;i class="icon-check"&gt;&lt;/i&gt; Een vraag over je bestelling?&lt;/h3&gt;
+            &lt;p&gt;
+                Aarzel niet om ons te contacteren per &lt;a href="{0}"&gt;email&lt;/a&gt;.
+            &lt;/p&gt;
+        &lt;/div&gt;</value>
+  </data>
+  <data name="SizeChartBodyHtml" xml:space="preserve">
+    <value>&lt;table class="table table-hover"&gt;
+            &lt;tr&gt;
+                &lt;td colspan="4"&gt;&lt;strong&gt;Ondergoed&lt;/strong&gt;&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Tailleomvang (cm)&lt;/td&gt;
+                &lt;td colspan="3"&gt;Taille&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;69/76&lt;/td&gt;
+                &lt;td&gt;36/38&lt;/td&gt;
+                &lt;td&gt;1&lt;/td&gt;
+                &lt;td&gt;S&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;77/84&lt;/td&gt;
+                &lt;td&gt;40/42&lt;/td&gt;
+                &lt;td&gt;2&lt;/td&gt;
+                &lt;td&gt;S/M&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;85/92&lt;/td&gt;
+                &lt;td&gt;44/46&lt;/td&gt;
+                &lt;td&gt;3&lt;/td&gt;
+                &lt;td&gt;M/L&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;93/100&lt;/td&gt;
+                &lt;td&gt;48/50&lt;/td&gt;
+                &lt;td&gt;4&lt;/td&gt;
+                &lt;td&gt;L/XL&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;101/108&lt;/td&gt;
+                &lt;td&gt;52/54&lt;/td&gt;
+                &lt;td&gt;5&lt;/td&gt;
+                &lt;td&gt;XL&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;109/116&lt;/td&gt;
+                &lt;td&gt;56/58&lt;/td&gt;
+                &lt;td&gt;6&lt;/td&gt;
+                &lt;td&gt;XXL&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;</value>
+  </data>
+  <data name="SizeChartModalTitle" xml:space="preserve">
+    <value>Maathulp</value>
+  </data>
+  <data name="TermsAndConditions" xml:space="preserve">
+    <value>Algemene voorwaarden</value>
+  </data>
+  <data name="ThankYouTitle" xml:space="preserve">
+    <value>Bedankt!</value>
+  </data>
+  <data name="YourDataTitle" xml:space="preserve">
+    <value>Jouw gegevens</value>
+  </data>
+  <data name="YourOrder" xml:space="preserve">
+    <value>Jouw bestelling</value>
+  </data>
+  <data name="CountryLU" xml:space="preserve">
+    <value>Luxemburg</value>
+  </data>
+  <data name="MailShipmentConfirmationSubject" xml:space="preserve">
+    <value>Je ManBox levering is klaar</value>
+  </data>
+  <data name="MailSubscriptionConfirmationSubject" xml:space="preserve">
+    <value>Welkom bij ManBox</value>
+  </data>
+  <data name="FacebookConnectButton" xml:space="preserve">
+    <value>Facebook Login</value>
+  </data>
+  <data name="CartInfo" xml:space="preserve">
+    <value>Levering: &lt;strong&gt;elke 3 maanden&lt;/strong&gt;</value>
+  </data>
+  <data name="CartFrozenNotif" xml:space="preserve">
+    <value>Je kan je selectie niet wijzingen op dit moment. Je bestelling is in voorbereiding.</value>
+  </data>
+  <data name="LandingHeaderTitle" xml:space="preserve">
+    <value>NON STOP MEN ESSENTIALS</value>
+  </data>
+  <data name="LandingSecondary1Content" xml:space="preserve">
+    <value>Kies een set van items die je  wenst te ontvangen. Van &lt;a href="{0}"&gt;boxers&lt;/a&gt; tot &lt;a href="{0}"&gt;condooms&lt;/a&gt;,  zorg dat je niet zonder zit.</value>
+  </data>
+  <data name="LandingSecondary1Title" xml:space="preserve">
+    <value>Stel je ManBox samen</value>
+  </data>
+  <data name="LandingSecondary2Content" xml:space="preserve">
+    <value>Elke 3 maanden worden de gekozen items bij je geleverd.
+Een week voor de levering ontvang je een melding. Op dat moment kan je je &lt;a href="{0}"&gt;ManBox&lt;/a&gt;  nog aanpassen.</value>
+  </data>
+  <data name="LandingSecondary2Title" xml:space="preserve">
+    <value>Elke 3 maanden</value>
+  </data>
+  <data name="LandingSecondary3Content" xml:space="preserve">
+    <value>Je kan je abonnement op elk gewenst moment wijzigen of je Manbox levering uitstellen. Niet tevreden? Stuur je bestelling terug binnen 30 dagen.</value>
+  </data>
+  <data name="LandingSecondary3Title" xml:space="preserve">
+    <value>Je beheert je Manbox zelf</value>
+  </data>
+  <data name="FooterSubscribeNewsletter" xml:space="preserve">
+    <value>Ontvang onze nieuwsbrief</value>
+  </data>
+  <data name="UnsubscribedMessage" xml:space="preserve">
+    <value>Je bent afgemeld voor de nieuwsbrief</value>
+  </data>
+  <data name="CouponApplyBtn" xml:space="preserve">
+    <value>Valideren</value>
+  </data>
+  <data name="CouponShowLink" xml:space="preserve">
+    <value>Heb je een kortingscode?</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Waarde</value>
+  </data>
+  <data name="Article" xml:space="preserve">
+    <value>Artikel</value>
+  </data>
+  <data name="CheckYourOrders" xml:space="preserve">
+    <value>Je bestelling bekijken</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="OrderReference" xml:space="preserve">
+    <value>Nummer</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Prijs</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="YourOrderHistory" xml:space="preserve">
+    <value>Bestellingen</value>
+  </data>
+  <data name="AllProducts" xml:space="preserve">
+    <value>Alle producten</value>
+  </data>
+  <data name="ForgottenPasswordFormSubmit" xml:space="preserve">
+    <value>Wachtwoord instellen</value>
+  </data>
+  <data name="ForgottenPasswordFormText" xml:space="preserve">
+    <value>Als je je wachtwoord bent vergeten, vul dan hieronder je e-mailadres in. Je ontvangt dan binnen enkele minuten een e-mail met instructies om je wachtwoord te wijzigen.</value>
+  </data>
+  <data name="ForgottenPasswordTitle" xml:space="preserve">
+    <value>Wachtwoord vergeten?</value>
+  </data>
+  <data name="PasswordResetMailSent" xml:space="preserve">
+    <value>We je zonet een email gestuurd met instructies om je wachtwoord in te stellen.</value>
+  </data>
+  <data name="WelcomeBackLogIn" xml:space="preserve">
+    <value>Hallo {0}. Gelieve om in te loggen om je ManBox te zien.</value>
+  </data>
+  <data name="Imprint" xml:space="preserve">
+    <value>Colofon</value>
+  </data>
+  <data name="BlogPostsTitle" xml:space="preserve">
+    <value>Blog</value>
+  </data>
+  <data name="CheckoutAcceptConditions" xml:space="preserve">
+    <value> Ik aanvaard de &lt;a href="{0}" target="_blank"&gt;Algemene gebruiksvoorwaarden&lt;/a&gt; van ManBox. We delen of verkopen uw informatie nooit aan derden.</value>
+  </data>
+  <data name="CheckoutFrequence" xml:space="preserve">
+    <value>Frequentie</value>
+  </data>
+  <data name="CheckoutFrequenceValue" xml:space="preserve">
+    <value>Elke 3 maanden</value>
+  </data>
+  <data name="CheckoutCCCardNumber" xml:space="preserve">
+    <value>Kaartnummer</value>
+  </data>
+  <data name="CheckoutCCExpiryDate" xml:space="preserve">
+    <value>Vervaldatum (mm/jjjj)</value>
+  </data>
+  <data name="CheckoutCCHolderName" xml:space="preserve">
+    <value>Naam kaarthouder</value>
+  </data>
+  <data name="CheckoutCCPayWith" xml:space="preserve">
+    <value>Betaal met</value>
+  </data>
+  <data name="CheckoutCCVerificationCode" xml:space="preserve">
+    <value>Kaart verificatie code</value>
+  </data>
+  <data name="Paymill_field_invalid_card_cvc" xml:space="preserve">
+    <value>Ongeldig Kaart verificatiecode</value>
+  </data>
+  <data name="Paymill_field_invalid_card_exp" xml:space="preserve">
+    <value>Ongeldig Vervaldatum</value>
+  </data>
+  <data name="Paymill_field_invalid_card_number" xml:space="preserve">
+    <value>Ongeldig kaartnummer</value>
+  </data>
+  <data name="LessDetail" xml:space="preserve">
+    <value>Minder Details</value>
+  </data>
+  <data name="DeliveryRushShippableAsap" xml:space="preserve">
+    <value>We will send you your order asap (expect 7 days max)</value>
+  </data>
+  <data name="DeliveryRushShippableTomorrow" xml:space="preserve">
+    <value>We can send you your order tomorrow!</value>
+  </data>
+  <data name="DeliverySnooze" xml:space="preserve">
+    <value>Your order was delayed of {0} week(s) to be shipped on this date: {1}</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Bevestigen</value>
+  </data>
+  <data name="DeliveryBtnRush" xml:space="preserve">
+    <value>Ship ASAP</value>
+  </data>
+  <data name="DeliveryBtnSnooze" xml:space="preserve">
+    <value>Snooze</value>
+  </data>
+  <data name="DeliverySnoozeNotYet" xml:space="preserve">
+    <value>This delivery is scheduled far in time, you cannot snooze it yet.</value>
+  </data>
+  <data name="Modify" xml:space="preserve">
+    <value>Aanpassen</value>
+  </data>
+  <data name="AccountAddressUpdate" xml:space="preserve">
+    <value>Wijzig je verzendadres</value>
+  </data>
+  <data name="AccountMyOrders" xml:space="preserve">
+    <value>Bestellingen</value>
+  </data>
+  <data name="AccountPasswordChange" xml:space="preserve">
+    <value>Wijzig je wachtwoord</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Nieuw wachtwoord</value>
+  </data>
+  <data name="NewPasswordRepeat" xml:space="preserve">
+    <value>Bevestig je nieuw wachtwoord</value>
+  </data>
+  <data name="AccountRushLbl" xml:space="preserve">
+    <value>Ik wil mijn Manbox nu ontvangen</value>
+  </data>
+  <data name="AccountSnoozeOfLbl" xml:space="preserve">
+    <value>Uitstellen mijn Manbox voor</value>
+  </data>
+  <data name="AccountSnoozeWeeks" xml:space="preserve">
+    <value>weken</value>
+  </data>
+  <data name="AccountAddressChangeOK" xml:space="preserve">
+    <value>Je verzendadres is gewijzigd</value>
+  </data>
+  <data name="AccountPasswordChangeOK" xml:space="preserve">
+    <value>Je wachtwoord is gewijzigd</value>
+  </data>
+  <data name="WelcomeMailCouponSubject" xml:space="preserve">
+    <value>Je € 3 korting op Manbox</value>
+  </data>
+  <data name="WelcomeModalCta" xml:space="preserve">
+    <value>€ 3 korting ontvangen</value>
+  </data>
+  <data name="WelcomeModalMsgList" xml:space="preserve">
+    <value>&lt;ul&gt;
+                &lt;li&gt;Kies je sokken en ondergoed&lt;/li&gt;
+                &lt;li&gt;Bestel en krijg je manbox nu&lt;/li&gt;
+                &lt;li&gt;Later zullen we bekijken wat je wenst opnieuw te krijgen&lt;/li&gt;
+            &lt;/ul&gt;</value>
+  </data>
+  <data name="WelcomeModalNoSpam" xml:space="preserve">
+    <value>Geen spam, beloofd!</value>
+  </data>
+  <data name="WelcomeModalSubscribe" xml:space="preserve">
+    <value>Schrijf je nu in op de nieuwsbrief en ontvang meteen € 3 korting </value>
+  </data>
+  <data name="WelcomeModalSubscribeSuccess" xml:space="preserve">
+    <value>&lt;strong&gt;Ingeschreven!&lt;/strong&gt; Je hebt een kortingscode per e-mail ontvangen.</value>
+  </data>
+  <data name="ThankYouModificationText" xml:space="preserve">
+    <value>De inhoud van je manbox is nu gewijzigd</value>
+  </data>
+  <data name="ThankYouText" xml:space="preserve">
+    <value>Hartelijk bedankt voor je bestelling bij &lt;strong&gt;Manbox&lt;/strong&gt;.</value>
+  </data>
+  <data name="ThankYouText2" xml:space="preserve">
+    <value>Heb je nog vragen over je bestelling? Aarzel niet om ons te contacteren.</value>
+  </data>
+  <data name="ThankYouText3" xml:space="preserve">
+    <value>&lt;strong&gt;Tot binnenkort!&lt;/strong&gt;&lt;br /&gt;
+ManBox Team</value>
+  </data>
+  <data name="CheckoutSizeTitle" xml:space="preserve">
+    <value>Bijna klaar. Gelieve jouw maat na te kijken.</value>
+  </data>
+  <data name="ComposeCustomTitle" xml:space="preserve">
+    <value>Stel je manbox samen &lt;a class="small show-packs" href="javascript:;"&gt;of kies een pack&lt;/a&gt;</value>
+  </data>
+  <data name="ComposePacksChooseBtn" xml:space="preserve">
+    <value>Kiezen</value>
+  </data>
+  <data name="ComposePacksTitle" xml:space="preserve">
+    <value>&lt;span class="blue-text"&gt;&lt;strong&gt;Nieuw!&lt;/strong&gt;&lt;/span&gt; Manbox pakketten aan &lt;span class="blue-text"&gt;extra voordelige prijs&lt;/span&gt; 
+        &lt;br /&gt;Kies een pack, selecteer je maat en klaar!   &lt;a class="small skip-packs" href="javascript:;"&gt;(of stel je custom manbox samen)&lt;/a&gt;</value>
+  </data>
+  <data name="FreeShipping" xml:space="preserve">
+    <value>Gratis verzending</value>
+  </data>
+  <data name="CheckoutSizeVerify" xml:space="preserve">
+    <value>Gelieve jouw maat na te kijken</value>
+  </data>
+  <data name="ComposePacksCatalogPrice" xml:space="preserve">
+    <value>Adviesprijs</value>
+  </data>
+  <data name="ComposePacksDiscount" xml:space="preserve">
+    <value>Uw voordeel</value>
+  </data>
+  <data name="ComposePacksPopover1" xml:space="preserve">
+    <value>De totale waarde van de goederen bij aanbevolen adviesprijs op datum van juli 2013</value>
+  </data>
+  <data name="ComposePacksPopover2" xml:space="preserve">
+    <value>Uw Manbox pack voordeel </value>
+  </data>
+  <data name="ComposePacksZoom" xml:space="preserve">
+    <value>Klik om te zoomen</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Volgende</value>
+  </data>
+  <data name="InvalidSubscription" xml:space="preserve">
+    <value>Ongeldig winkelmand..</value>
+  </data>
+  <data name="TestimonialsTitle" xml:space="preserve">
+    <value>Lees wat onze klanten over ons zeggen</value>
+  </data>
+  <data name="UpcomingBoxNotificationMailSubject" xml:space="preserve">
+    <value>Uw volgende Manbox binnenkort verzonden</value>
+  </data>
+  <data name="Paymill_field_cancel_3ds" xml:space="preserve">
+    <value>Annuleren</value>
+  </data>
+  <data name="VerifCodeModalBodyHtml" xml:space="preserve">
+    <value>Voor MasterCard en Visa, kijk op de keerzijde van uw kaart waar u een code met 3 cijfers vindt in het veld van uw handtekening.</value>
+  </data>
+  <data name="VerifCodeModalTitle" xml:space="preserve">
+    <value>Kaart verificatie code</value>
+  </data>
+  <data name="LandingStep1" xml:space="preserve">
+    <value>Stel je ManBox samen</value>
+  </data>
+  <data name="LandingStep2" xml:space="preserve">
+    <value>Om de 3 maanden wordt je box geleverd</value>
+  </data>
+  <data name="LandingStep3" xml:space="preserve">
+    <value>Relax! Je beheert je Manbox zelf</value>
+  </data>
+  <data name="LandingCreateBoxInfo" xml:space="preserve">
+    <value>Vrijblijvend, gratis retour</value>
+  </data>
+  <data name="LandingHeaderTitle2" xml:space="preserve">
+    <value>Boxers, sokken, t-shirts,...  elke 3 maanden aan huis geleverd</value>
+  </data>
+  <data name="GiftDefaultGuestName" xml:space="preserve">
+    <value>Geert</value>
+  </data>
+  <data name="GiftDefaultMessage" xml:space="preserve">
+    <value>Ik wist meteen dat dit cadeaupakket je op het lijf geschreven was, zo kun je het nieuwe jaar alvast steengoed inzetten!</value>
+  </data>
+  <data name="MenuCompose" xml:space="preserve">
+    <value>Abonnement</value>
+  </data>
+  <data name="MenuGifts" xml:space="preserve">
+    <value>Cadeaupakketten</value>
+  </data>
+  <data name="LandingGiftsInfo" xml:space="preserve">
+    <value>op basis van het type man</value>
+  </data>
+  <data name="LandingGoToGifts" xml:space="preserve">
+    <value>Cadeaupakketten</value>
+  </data>
+  <data name="ManBoxKeywordsTag" xml:space="preserve">
+    <value>manbox,slip, slips, scheermes,sokken, boxers,condooms,ondergoed,essentials,mannen,box,abonnement,levering</value>
+  </data>
+  <data name="GiftsDear" xml:space="preserve">
+    <value>Beste</value>
+  </data>
+  <data name="GiftsDetailBtn" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="GiftsFaq" xml:space="preserve">
+    <value>&lt;h3&gt;Vragen over onze cadeaupakketten?&lt;/h3&gt;
+&lt;a class="faq-question" href="javascript:void(0)"&gt;
+	&lt;i class="icon-plus-sign"&gt;&lt;/i&gt; Wat zit er in de cadeaupakketten van ManBox?
+&lt;/a&gt;
+&lt;p class="faq-answer"&gt;
+	De cadeaupakketten van ManBox bevatten een reeks artikelen die speciaal werden afgestemd op elk type man. De pakketten worden slechts één keer geleverd. Naast de artikelen zit er ook een cadeaubon in die kan worden ingeruild voor alle ManBox abonnementen.
+&lt;/p&gt;
+
+&lt;a class="faq-question" href="javascript:void(0)"&gt;
+	&lt;i class="icon-plus-sign"&gt;&lt;/i&gt; Hoe kies ik de juiste maat?
+&lt;/a&gt;
+&lt;p class="faq-answer"&gt;
+	Niet zeker van de maat? Geen nood! Onze maten komen overeen met de normale maten (geen artikelen in extra small of large), maar al onze producten kunnen ook worden omgeruild. Als een product of als meerdere producten niet passen, contacteer ons dan op het volgende e-mailadres: support@manbox.be
+	In het pakket vindt u ook alle informatie om de goederen terug te zenden.
+&lt;/p&gt;
+
+&lt;a class="faq-question" href="javascript:void(0)"&gt;
+	&lt;i class="icon-plus-sign"&gt;&lt;/i&gt; Hoe gebeurt de levering?
+&lt;/a&gt;
+&lt;p class="faq-answer"&gt;
+	U kunt ervoor kiezen om het pakket rechtstreeks te laten leveren bij de persoon aan wie u het cadeau wil geven, of om het bij u thuis te ontvangen en het eigenhandig af te geven. In beide gevallen bevat het pakket geen prijsinformatie. Bovendien hoeft u zich geen zorgen te maken over een mooie cadeauverpakking, onze pakketten zijn al sensationeel ingepakt!
+&lt;/p&gt;</value>
+  </data>
+  <data name="GiftsHeaderList" xml:space="preserve">
+    <value>&lt;ol&gt;
+                    &lt;li&gt;Kies uw cadeaupakket op basis van het type man&lt;/li&gt;
+                    &lt;li&gt;De cadeaupakketten worden slechts één keer geleverd. In het pakket zit ook een cadeaubon om de abonnementsformule uit te proberen.&lt;/li&gt;
+                    &lt;li&gt;
+                        U geeft het cadeau persoonlijk af of laat het bij hem thuis leveren met een persoonlijke boodschap erbij.&lt;br /&gt;
+                        &lt;a href="#faq"&gt;&lt;i class="icon-arrow-right"&gt;&lt;/i&gt; Meer weten&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ol&gt;</value>
+  </data>
+  <data name="GiftsHeaderParagraph" xml:space="preserve">
+    <value>Voor elke man wat wils, voor elke man een ManBox cadeaupakket!</value>
+  </data>
+  <data name="GiftsHeaderTitle" xml:space="preserve">
+    <value>Cadeaupakketten</value>
+  </data>
+  <data name="GiftsHisName" xml:space="preserve">
+    <value>Zijn voornaam</value>
+  </data>
+  <data name="GiftsHisSize" xml:space="preserve">
+    <value>Zijn maat</value>
+  </data>
+  <data name="GiftsIncludingVoucher" xml:space="preserve">
+    <value>+ cadeaubon </value>
+  </data>
+  <data name="GiftsOfferBtn" xml:space="preserve">
+    <value>Dit pack geven</value>
+  </data>
+  <data name="GiftsRemainingChars" xml:space="preserve">
+    <value />
+  </data>
+  <data name="GiftsShippingAddress" xml:space="preserve">
+    <value>Verzendadres </value>
+  </data>
+  <data name="GiftsShippingAddressInfo" xml:space="preserve">
+    <value>Rechtstreeks bij de persoon of bij u</value>
+  </data>
+  <data name="GiftsShippingPriceInfo" xml:space="preserve">
+    <value>In beide gevallen bevat het pakket geen prijsinformatie</value>
+  </data>
+  <data name="GiftsYourMessage" xml:space="preserve">
+    <value>Uw persoonlijke boodschap</value>
+  </data>
+  <data name="GiftsYourMessage2" xml:space="preserve">
+    <value>Uw boodschap</value>
+  </data>
+  <data name="GiftsYourMessageInfo" xml:space="preserve">
+    <value>Schrijf hier uw persoonlijke boodschap of gebruik de standaard boodschap.</value>
+  </data>
+  <data name="TermsAndConditionsText" xml:space="preserve">
+    <value>&lt;h3&gt;
+    Artikel 1: Definities
+&lt;/h3&gt;
+&lt;p&gt;
+    Ondernemer: de natuurlijke of rechtspersoon die producten en/of diensten op afstand aan consumenten aanbiedt;
+&lt;/p&gt;
+&lt;p&gt;
+    Consument: de natuurlijke persoon die niet handelt in de uitoefening van beroep of bedrijf en een overeenkomst op afstand aangaat met de ondernemer;
+&lt;/p&gt;
+&lt;p&gt;
+    Overeenkomst op afstand: een overeenkomst waarbij in het kader van een door de ondernemer georganiseerd systeem voor verkoop op afstand van producten en/of
+    diensten, tot en met het sluiten van de overeenkomst uitsluitend gebruik gemaakt wordt van één of meer technieken voor communicatie op afstand;
+&lt;/p&gt;
+&lt;p&gt;
+    Techniek voor communicatie op afstand: middel dat kan worden gebruikt voor het sluiten van een overeenkomst, zonder dat consument en ondernemer
+    gelijktijdig in dezelfde ruimte zijn samengekomen;
+&lt;/p&gt;
+&lt;p&gt;
+    Bedenktijd: de termijn waarbinnen de consument gebruik kan maken van zijn herroepingsrecht;
+&lt;/p&gt;
+&lt;p&gt;
+    Herroepingsrecht: de mogelijkheid voor de consument om binnen de bedenktijd af te zien van de overeenkomst op afstand;
+&lt;/p&gt;
+&lt;p&gt;
+    Dag: kalenderdag;  
+&lt;/p&gt;
+&lt;p&gt;
+    Duurzame gegevensdrager: elk middel dat de consument of ondernemer in staat stelt om informatie die aan hem persoonlijk is gericht, op te slaan op een
+    manier die toekomstige raadpleging en ongewijzigde reproductie van de opgeslagen informatie mogelijk maakt.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 2: Identiteit van de onderneming en haar geografische adres:
+&lt;/h3&gt;
+&lt;p&gt;
+    Identiteit van de onderneming en haar geografische adres:
+&lt;/p&gt;
+&lt;p&gt;
+    Vennootschap:
+&lt;/p&gt;
+&lt;p&gt;
+    COZYPIXEL BVBA
+&lt;/p&gt;
+&lt;p&gt;
+    Handelend onder de naam : ManBox
+&lt;/p&gt;
+&lt;p&gt;
+    BTW- en Ondernemingsnummer: BE 0503772171
+&lt;/p&gt;
+&lt;p&gt;
+    Vestiging en bezoekadres:
+&lt;/p&gt;
+&lt;p&gt;
+    Victor Rousseaulaan 13
+    &lt;br /&gt;
+    1190 Brussel
+&lt;/p&gt;
+&lt;p&gt;
+    Telefoonnummer: 0032 (0)488 88 13 21
+&lt;/p&gt;
+&lt;p&gt;
+    Bereikbaarheid:
+&lt;/p&gt;
+&lt;p&gt;
+    Van maandag tot vrijdag van 9.00 uur tot 18.00 uur.
+&lt;/p&gt;
+&lt;p&gt;
+    Email: info@manbox.be
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 3:Het herroepingsrecht:
+&lt;/h3&gt;
+&lt;p&gt;
+    " De consument heeft het recht aan de onderneming mee te delen dat hij afziet van de aankoop, zonder betaling van een boete en zonder opgave van motief
+    binnen 30 kalenderdagen vanaf de dag die volgt op de levering van het goed of op het sluiten van de dienstenovereenkomst. "
+&lt;/p&gt;
+&lt;p&gt;
+    Tijdens deze termijn zal de consument zorgvuldig omgaan met het product en de verpakking. Hij zal het product slechts in die mate uitpakken of gebruiken
+    voor zover dat nodig is om te kunnen beoordelen of hij het product wenst te behouden. Indien hij van zijn herroepingsrecht gebruik maakt, zal hij het
+    product met alle geleverde toebehoren en – indien redelijkerwijze mogelijk - in de originele staat en verpakking aan de ondernemer retourneren, conform de
+    door de ondernemer verstrekte redelijke en duidelijke instructies.In ieder geval wordt retour enkel aanvaard indien het artikel onbevuild, onbeschadigd en
+    ongedragen is en zich in de originele verpakking bevindt. Aan retour zijn naast eventuele verzendingskosten geen kosten noch enige vergoeding verbonden.Na
+    afhandeling van de retour wordt de consument door de verkoper terugbetaald op dezelfde manier als de consument betaling uitvoerde. Indien gewenst kan de
+    consument ook opteren voor een tegoedbon. Indien de retour plaatsvindt na reeds uitgevoerde verzendingen zoals beschreven in Art. 4, zal de consument enkel
+    geldig kunnen terugzenden op basis van een beschadigd, vuil of berispelijk product. Hierop zal de consument het vervangende product ontvangen na het
+    afhandelen van de retour, en dit zonder enige kosten hieraan verbonden.
+&lt;/p&gt;
+&lt;p&gt;
+    Terugzendingen van inroeping van het herroepingsrecht dient te gebeuren binnen de 5 dagen.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 4: Kenmerken van de dienst en het product:
+&lt;/h3&gt;
+&lt;p&gt;
+    Dienst
+&lt;/p&gt;
+&lt;p&gt;
+    Het hoofdkenmerk van het abonnement is dat de producten worden aangeboden in een abonnementsvorm. Dit houdt in dat de consument bij de goedkeuring van zijn
+    aankoop een overeenkomst op afstand afsluit voor een periode van één jaar. Door deze overeenkomst tot stand te brengen verbindt de ondernemer er zich toe
+    om, zoals door de consument gevraagd in de overeenkomst, periodieke verzendingen te garanderen zoals hieronder voorgesteld in bijlage. De opzegging van het
+    abonnement is ten allen tijde mogelijk, in acht genomen dat de eerstvolgende verzending nog zal uitgevoerd worden. Het reeds betaalde bedrag zal daarna
+    binnen een termijn van 30 dagen pro rata aan het reeds ontvangen producten worden terugbetaald op dezelfde wijze als de betaling heeft plaatsgevonden.
+&lt;/p&gt;
+&lt;p&gt;
+    Met betrekking tot de verzendingen, zal de ondernemer zich aan de wettelijke verplichting houden om binnen de dertig dagen na het tot stand komen van de
+    overeenkomst de eerste verzending te versturen. Verder zal de consument instemmen met de periodiek aflevering van zijn gevraagde producten.
+&lt;/p&gt;
+&lt;p&gt;
+    Met periodieke verzending doelt de ondernemer op het gelijkmatig verspreiden van de verzendingen over een termijn van één jaar met een maximale afwijking
+    van 30 dagen, zoals hieronder in bijlage 1 geïllustreerd.
+&lt;/p&gt;
+&lt;p&gt;
+    De abonnementen worden niet automatisch verlengd. De ondernemer zal op het einde van de termijn van het abonnement een uitnodiging tot betaling sturen naar
+    de consument met de duidelijke toelichting van zijn mogelijkheden hierin vermeld. Indien de consument niet reageert op deze uitnodiging betekent dat het
+    einde van de overeenkomsten tussen de consument en ondernemer. Indien de consument ingaat op de uitnodiging aanvaardt hij de verlenging van de
+    overeenkomst, met zijn algemene voorwaarden, en met een gelijkaardige termijn met dezelfde opzegmogelijkheden zoals beschreven in punt 1. Product
+&lt;/p&gt;
+&lt;p&gt;
+    1. Indien een product een beperkte geldigheidsduur heeft of onder voorwaarden geschiedt, wordt dit nadrukkelijk in het aanbod vermeld.
+&lt;/p&gt;
+&lt;p&gt;
+    2. Het product bevat een volledige en nauwkeurige omschrijving van de aangeboden producten en/of diensten. De beschrijving is voldoende gedetailleerd om
+    een goede beoordeling van het aanbod door de consument mogelijk te maken. Als de ondernemer gebruik maakt van afbeeldingen zijn deze een waarheidsgetrouwe
+    weergave van de aangeboden producten en/of diensten. Kennelijke vergissingen of fouten in het aanbod binden de ondernemer niet.
+&lt;/p&gt;
+&lt;p&gt;
+    3. Elk aanbod bevat zodanige informatie, dat voor de consument duidelijk is wat de rechten en verplichtingen zijn, die aan de aanvaarding van het aanbod
+    zijn verbonden. Dit betreft in het bijzonder:
+&lt;/p&gt;
+&lt;p&gt;
+    a) de prijs inclusief belastingen;
+&lt;/p&gt;
+&lt;p&gt;
+    b) de eventuele kosten van aflevering;
+&lt;/p&gt;
+&lt;p&gt;
+    c) het al dan niet van toepassing zijn van het herroepingsrecht;
+&lt;/p&gt;
+&lt;p&gt;
+    d) de wijze van betaling, aflevering of uitvoering van de overeenkomst;
+&lt;/p&gt;
+&lt;p&gt;
+    e) indien de overeenkomst na de totstandkoming wordt gearchiveerd, op welke wijze deze voor de consument te raadplegen is;
+&lt;/p&gt;
+&lt;p&gt;
+    f) de wijze waarop de consument voor het sluiten van de overeenkomst van door hem niet gewilde handelingen op de hoogte kan geraken, alsmede de wijze
+    waarop hij deze kan herstellen voordat de overeenkomst tot stand komt;
+&lt;/p&gt;
+&lt;p&gt;
+    g) de eventuele talen waarin, naast het Nederlands, de overeenkomst kan worden gesloten;
+&lt;/p&gt;
+&lt;p&gt;
+    h) de minimale duur van de overeenkomst op afstand in geval van een overeenkomst die strekt tot voortdurende of periodieke aflevering van producten of
+    diensten.
+&lt;/p&gt;
+&lt;p&gt;
+    4. We stellen alles in het werk om ervoor te zorgen dat de kleuren op de website zo goed mogelijk overeenstemmen met die van het eigenlijke product. Wegens
+    technische beperkingen kunnen bepaalde kleuren verschillen.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 5: Prijs van het goed of de dienst:
+&lt;/h3&gt;
+&lt;p&gt;
+    1. Gedurende de in het aanbod vermelde geldigheidsduur worden de prijzen van de aangeboden producten en/of diensten niet verhoogd, behoudens
+    prijswijzigingen als gevolg van veranderingen in BTW tarieven.
+&lt;/p&gt;
+&lt;p&gt;
+    2. In afwijking van het vorige lid kan de ondernemer producten of diensten waarvan de prijzen gebonden zijn aan schommelingen op de financiële markt en
+    waar de ondernemer geen invloed op heeft, met variabele prijzen aanbieden. Deze gebondenheid aan schommelingen en het feit dat eventueel vermelde prijzen
+    richtprijzen zijn, worden bij het aanbod vermeld.
+&lt;/p&gt;
+&lt;p&gt;
+    3. Prijsverhogingen binnen 3 maanden na de totstandkoming van de overeenkomst zijn alleen toegestaan indien zij het gevolg zijn van wettelijke regelingen
+    of bepalingen.
+&lt;/p&gt;
+&lt;p&gt;
+    4. Prijsverhogingen vanaf 3 maanden na de totstandkoming van de overeenkomst zijn alleen toegestaan indien de ondernemer dit bedongen heeft en:
+&lt;/p&gt;
+&lt;p&gt;
+    a. deze het gevolg zijn van wettelijke regelingen of bepalingen; of
+&lt;/p&gt;
+&lt;p&gt;
+    b. de consument de bevoegdheid heeft de overeenkomst op te zeggen tegen de dag waarop de prijsverhoging ingaat.
+&lt;/p&gt;
+&lt;p&gt;
+    5. De in het aanbod van producten of diensten genoemde prijzen zijn inclusief BTW
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 6: De leveringskosten:
+&lt;/h3&gt;
+&lt;p&gt;
+    De leveringskosten van alle producten aangeboden op www.manbox.be en www.manbox.nl zitten vervat in de geafficheerde prijs, dit uitgezonderd voor
+    verzendingen buiten Europa. In geval van verzending buiten Europa zullen de verzendingskosten duidelijk geafficheerd worden op de bestelpagina, alvorens de
+    consument de bestelling heeft bevestigd.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 7 : De wijze van levering en uitvoering van de overeenkomst
+&lt;/h3&gt;
+&lt;p&gt;
+    De ondernemer zal de grootst mogelijke zorgvuldigheid in acht nemen bij het in ontvangst nemen en bij de uitvoering van bestellingen van producten en bij
+    de beoordeling van aanvragen tot verlening van diensten.
+&lt;/p&gt;
+&lt;p&gt;
+    Als plaats van levering geldt het adres dat de consument aan het bedrijf kenbaar heeft gemaakt.
+&lt;/p&gt;
+&lt;p&gt;
+    Met inachtneming van hetgeen hierover in artikel 4 van deze algemene voorwaarden is vermeld, zal het bedrijf geaccepteerde bestellingen met bekwame spoed
+    doch uiterlijk binnen 30 dagen uitvoeren tenzij een langere leveringstermijn is afgesproken. Indien de bezorging vertraging ondervindt, of indien een
+    bestelling niet dan wel slechts gedeeltelijk kan worden uitgevoerd, ontvangt de consument hiervan uiterlijk één maand nadat hij de bestelling geplaatst
+    heeft bericht. De consument heeft in dat geval het recht om de overeenkomst zonder kosten te ontbinden en recht op eventuele schadevergoeding.
+&lt;/p&gt;
+&lt;p&gt;
+    In geval van ontbinding conform het vorige lid zal de ondernemer het bedrag dat de consument betaald heeft zo spoedig mogelijk, doch uiterlijk binnen 30
+    dagen na ontbinding, terugbetalen.
+&lt;/p&gt;
+&lt;p&gt;
+    Indien levering van een besteld product onmogelijk blijkt te zijn, zal de ondernemer zich inspannen om een vervangend artikel beschikbaar te stellen.
+    Uiterlijk bij de bezorging zal op duidelijke en begrijpelijke wijze worden gemeld dat een vervangend artikel wordt geleverd. Bij vervangende artikelen kan
+    het herroepingsrecht niet worden uitgesloten. De kosten van retourzending zijn voor rekening van de ondernemer.
+&lt;/p&gt;
+&lt;p&gt;
+    Het risico van beschadiging en/of vermissing van producten berust tot het moment van bezorging aan de consument bij de ondernemer, tenzij uitdrukkelijk
+    anders is overeengekomen.
+&lt;/p&gt;
+&lt;p&gt;
+    Verder is de uitvoering van de abonnementsdienst volgens de voorwaarden gesteld in Artikel 4.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 8: De wijze van betaling:
+&lt;/h3&gt;
+&lt;p&gt;
+    Betaling dient de levering vooraf te gaan en gebeurt via één van volgende betalingsmogelijkheden : Visa, Ideal, MasterCard en PayPal.
+&lt;/p&gt;
+&lt;p&gt;
+    Er kan ook worden betaald met vouchers ( cadeaubonnen, kortingsbonnen, tegoedbonnen…). Indien via de webshop wordt betaald met één of meerdere voucher(s)
+    waarvan het bedrag de te betalen prijs overschrijdt, zal de voucher geldig blijven voor het resterende bedrag.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 9: Bevestiging Bestelling
+&lt;/h3&gt;
+&lt;p&gt;
+    Nadat het systeem voornoemde betaling heeft aanvaard, bevestigt de verkoper de bestelling via e-mail.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 10: Overmacht
+&lt;/h3&gt;
+&lt;p&gt;
+    We zijn niet verantwoordelijk voor de niet-nakoming van onze verplichtingen indien dit het gevolg is van, of wordt veroorzaakt door arbeidsgeschillen of
+    eender welke andere omstandigheden die redelijkerwijs buiten de controle van de onderneming vallen, zoals gevallen van overmacht, oproer en onlusten,
+    overstroming, brand, staking, lock-out, problemen om vervoer te vinden en de uitvaardiging van wetten. Indien het wegens dergelijke omstandigheden voor de
+    onderneming onmogelijk wordt om de bestelde artikelen binnen een redelijke tijdsspanne geheel of gedeeltelijk te leveren, wordt de aansprakelijkheid van de
+    consument beperkt tot de waarde van de reeds geleverde artikelen, vermeerderd met eender welke bijbehorende leveringskosten.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 11: Intellectuele Eigendom
+&lt;/h3&gt;
+&lt;p&gt;
+    De inhoud van deze website, inclusief de daarvoor gebruikte technologie zijn eigendom of onder licentie geplaatst door de ondernemer, zijnde COZYPIXEL
+    BVBA, zijn exclusief eigendom van de ondernemer en auteursrechtelijk beschermd.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 12: Aansprakelijkheid webshop
+&lt;/h3&gt;
+&lt;p&gt;
+    De website van de ondernemer is bestemd om algemene informatie ter beschikking te stellen van de consument over de producten en activiteiten van de
+    ondernemer. De ondernemer heeft m.b.t. de toegang, het bestelproces, de levering of de andere diensten slechts een inspanningsverbintenis.
+&lt;/p&gt;
+&lt;p&gt;
+    De ondernemer heeft het recht om op ieder ogenblik de site geheel of gedeeltelijk op te schorten of stop te zetten wegens onderhoud, updating of enige
+    andere reden, zelfs zonder voorafgaande waarschuwing.
+&lt;/p&gt;
+&lt;p&gt;
+    De ondernemer kan niet aansprakelijk gesteld worden voor enige hinder of schade door het gebruik van internet, door enige panne van het systeem, het
+    binnendringen van outsiders of van een virus, noch voor eventueel door derden hierop geplaatste of verwerkte informatie of door om het even welk feit dat
+    als overmacht kan worden aanzien.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 13: Klachtenregeling:
+&lt;/h3&gt;
+&lt;p&gt;
+    Indien U een klacht wenst te formuleren kan U terecht door een mail te versturen naar support@manbox.be . U kan eveneens terecht op onze website
+    www.manbox.be en via het contactformulier uw klacht doorsturen.
+&lt;/p&gt;
+&lt;p&gt;
+    Wenst U telefonisch contact staan wij steeds ter uwer beschikking tijdens de kantooruren op 0032 (0)488 88 13 21.
+&lt;/p&gt;
+&lt;h3&gt;
+    Artikel 14: Bevoegdheid Geschillen:
+&lt;/h3&gt;
+&lt;p&gt;
+    Belgisch recht is van toepassing op voorliggende overeenkomst.
+&lt;/p&gt;</value>
+  </data>
+  <data name="ImprintText" xml:space="preserve">
+    <value>&lt;p&gt;
+    COZYPIXEL BVBA
+&lt;/p&gt;
+&lt;p&gt;
+    Handelend onder de naam : ManBox
+&lt;/p&gt;
+&lt;p&gt;
+    BTW- en Ondernemingsnummer: BE 0503772171
+&lt;/p&gt;
+&lt;p&gt;
+    Vestiging en bezoekadres:
+&lt;/p&gt;
+&lt;p&gt;
+    Victor Rousseaulaan 13
+    &lt;br/&gt;
+    1190 Brussel
+&lt;/p&gt;</value>
+  </data>
+  <data name="PrivacyTermsText" xml:space="preserve">
+    <value>&lt;p&gt;
+    Deze pagina beschrijft het beleid dat op deze website van ManBox wordt toegepast inzake de persoonlijke levenssfeer evenals de verwerking van alle
+    informatie die verzameld wordt tijdens of naar aanleiding van uw bezoek aan deze website.
+&lt;/p&gt;
+&lt;h3&gt;
+    Doel van de verwerking van de persoonsgegevens
+&lt;/h3&gt;
+&lt;p&gt;
+    Bij de registratie op deze website en/of plaatsing van een bestelling, zal van u een aantal persoonsgegevens gevraagd worden. Deze persoonsgegevens zijn
+    noodzakelijk voor de correcte en vlotte werking van de webshop. De gegevens worden gebruikt om de door u gevraagde goederen en diensten te kunnen leveren.
+&lt;/p&gt;
+&lt;h3&gt;
+    Verwerking van de persoonsgegevens en de personen die toegang hebben tot de verwerkte gegevens
+&lt;/h3&gt;
+&lt;p&gt;
+    De verstrekte gegevens worden opgenomen in de bestanden van ManBox. De gegevens zullen enkel verwerkt worden in de mate dat de verwerking nodig is voor de
+    uitvoering van de overeenkomst die u met ManBox heeft afgesloten.
+&lt;/p&gt;
+&lt;p&gt;
+    Uw persoonlijke gegevens zullen niet verkocht of verzonden worden aan derden, noch openbaar gemaakt worden.
+&lt;/p&gt;
+&lt;p&gt;
+    ManBox behoudt zich wel het recht voor uw gegevens te gebruiken of openbaar te maken, wanneer dit noodzakelijk is om de integriteit van de website te
+    vrijwaren, wanneer de wet dit eist, wanneer de verwerking voor u van levensbelang is, wanneer de verwerking moet gebeuren om een taak van openbaar belang
+    te vervullen of nog wanneer de gegevensverwerking noodzakelijk is om een gerechtvaardigd belang te behartigen.
+&lt;/p&gt;
+&lt;h3&gt;
+    Uw rechten met betrekking tot de door ons verzamelde gegevens
+&lt;/h3&gt;
+&lt;p&gt;
+    U heeft het recht uw gegevens in te kijken en te verbeteren. Tevens heeft u het recht u kosteloos te verzetten tegen het gebruik van uw gegevens voor
+    directe marketing.
+&lt;/p&gt;
+&lt;h3&gt;
+    Contactgegevens verwerker
+&lt;/h3&gt;
+&lt;p&gt;
+    COZYPIXEL BVBA
+&lt;/p&gt;
+&lt;p&gt;
+    Victor Rousseaulaan 13
+&lt;/p&gt;
+&lt;p&gt;
+    1190 Brussel - België
+&lt;/p&gt;
+&lt;p&gt;
+    +32(0)488 88 13 21
+&lt;/p&gt;
+&lt;p&gt;
+    info@manbox.be
+&lt;/p&gt;
+&lt;h3&gt;
+    Cookies
+&lt;/h3&gt;
+&lt;p&gt;
+    Cookies zijn kleine bestanden die via de website tijdelijk op uw harde schijf worden opgeslagen. Deze kleine bestanden vergemakkelijken de navigatie en
+    dragen in hoge mate bij tot de gebruiksvriendelijkheid van de website.
+&lt;/p&gt;
+&lt;p&gt;
+    Indien u door de browser wenst verwittigd te worden wanneer er een cookie wordt verzonden, kan u uw browserinstellingen aanpassen.
+&lt;/p&gt;
+&lt;p&gt;
+    Indien u geen cookies wenst te ontvangen, kan u in uw browserinstellingen kiezen voor “geen cookies accepteren”. U ontvangt dan geen cookies meer. Dit kan
+    echter leiden tot verlies aan functionaliteiten en verlies aan gebruiksvriendelijkheid van de website.
+&lt;/p&gt;
+&lt;h3&gt;
+    Links naar andere websites
+&lt;/h3&gt;
+&lt;p&gt;
+    Links die opgenomen zijn op de website zijn louter ter informatieve titel. Ondanks zorgvuldige inhoudelijke controle wordt geen aansprakelijkheid aanvaard,
+    noch voor de inhouden van externe links, noch voor de eerbiediging van een beleid inzake persoonlijke levenssfeer dat identiek is aan het beleid zoals
+    hierbij gedefinieerd. Bij het betreden van de externe links leest u best het privacybeleid van de betrokken website door.
+&lt;/p&gt;</value>
+  </data>
+  <data name="YoutubeVideoUrl" xml:space="preserve">
+    <value>//www.youtube.com/embed/JzSF0dRPiI4?hd=1&amp;rel=0&amp;autohide=1&amp;showinfo=0&amp;autoplay=1</value>
+  </data>
+  <data name="ArchivedVersion" xml:space="preserve">
+    <value>Archived version of ManBox. This service is not available anymore.</value>
+  </data>
+  <data name="ClosedInfo" xml:space="preserve">
+    <value>&lt;h3&gt;ManBox is no more&lt;h3&gt;&lt;h4&gt;We tried.&lt;/h4&gt; &lt;h4&gt;Thank you, again.&lt;/h4&gt; &lt;a class="skip"  href="http://flash.manbox.be"&gt;&lt;strong&gt;Visit our FLASH SALE site&lt;/strong&gt;&lt;/a&gt;&lt;a class="skip" href="#"&gt;Visit the archived version of ManBox&lt;/a&gt;</value>
+  </data>
+</root>

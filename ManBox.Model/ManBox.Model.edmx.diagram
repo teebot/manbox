@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="858e1a3e550d4c6cadcccd1ff0bd6dfb" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="ManBoxModel.Category" Width="1.5" PointX="6.25" PointY="0.5" />
+        <EntityTypeShape EntityType="ManBoxModel.Model" Width="1.5" PointX="9.25" PointY="2" />
+        <EntityTypeShape EntityType="ManBoxModel.Product" Width="1.5" PointX="12.25" PointY="3.5" />
+        <EntityTypeShape EntityType="ManBoxModel.SubscriptionDelivery" Width="1.5" PointX="18.25" PointY="6.5" />
+        <EntityTypeShape EntityType="ManBoxModel.SubscriptionDeliveryModel" Width="1.5" PointX="21.25" PointY="8" />
+        <AssociationConnector Association="ManBoxModel.FK_Product_Category" />
+        <AssociationConnector Association="ManBoxModel.FK_Model_Product" />
+        <AssociationConnector Association="ManBoxModel.FK_SubscriptionDeliveryModel_Model" />
+        <AssociationConnector Association="ManBoxModel.FK_SubscriptionDeliveryModel_SubscriptionDelivery" />
+        <EntityTypeShape EntityType="ManBoxModel.Country" Width="1.5" PointX="2.25" PointY="10" />
+        <EntityTypeShape EntityType="ManBoxModel.User" Width="1.5" PointX="6.125" PointY="10.5" />
+        <AssociationConnector Association="ManBoxModel.FK_User_Country" />
+        <EntityTypeShape EntityType="ManBoxModel.Subscription" Width="1.5" PointX="10.625" PointY="10.25" />
+        <AssociationConnector Association="ManBoxModel.FK_Subscription_User" />
+        <AssociationConnector Association="ManBoxModel.FK_SubscriptionDelivery_Subscription" />
+        <EntityTypeShape EntityType="ManBoxModel.Address" Width="1.5" PointX="17" PointY="12.5" />
+        <AssociationConnector Association="ManBoxModel.FK_Subscription_InvoiceAddress" />
+        <AssociationConnector Association="ManBoxModel.FK_Subscription_ShippingAddress" />
+        <EntityTypeShape EntityType="ManBoxModel.Brand" Width="1.5" PointX="16.375" PointY="3.25" />
+        <AssociationConnector Association="ManBoxModel.FK_Product_Brand" />
+        <EntityTypeShape EntityType="ManBoxModel.Language" Width="1.5" PointX="12.375" PointY="22.125" />
+        <EntityTypeShape EntityType="ManBoxModel.TranslationText" Width="1.5" PointX="11.875" PointY="19.125" />
+        <EntityTypeShape EntityType="ManBoxModel.Translation" Width="1.5" PointX="12" PointY="16.375" />
+        <AssociationConnector Association="ManBoxModel.FK_TranslationText_Language" />
+        <AssociationConnector Association="ManBoxModel.FK_Product_Translation" />
+        <AssociationConnector Association="ManBoxModel.FK_TranslationText_Translation" />
+        <AssociationConnector Association="ManBoxModel.FK_User_Language" ManuallyRouted="true" >
+          <ConnectorPoint PointX="12.375" PointY="22.125" />
+          <ConnectorPoint PointX="12.793471648797997" PointY="22.036457108434661" />
+          <ConnectorPoint PointX="12.956528351202003" PointY="22.001956534832054" />
+          <ConnectorPoint PointX="13.71875" PointY="21.840680833139647" />
+          <ConnectorPoint PointX="12.958333333333334" PointY="21.840680833139647" />
+          <ConnectorPoint PointX="12.791666666666666" PointY="21.840680833139647" />
+          <ConnectorPoint PointX="11.708333333333334" PointY="21.840680833139647" />
+          <ConnectorPoint PointX="11.541666666666666" PointY="21.840680833139647" />
+          <ConnectorPoint PointX="9.5445078721387926" PointY="21.840680833139647" />
+          <ConnectorPoint PointX="9.0765449333632677" PointY="19.785996089493061" />
+          <ConnectorPoint PointX="8.4891754960362" PointY="16.088883801553521" />
+          <ConnectorPoint PointX="8.4630247198692548" PointY="15.924281509091829" />
+          <ConnectorPoint PointX="8.077200215905453" PointY="13.49576476316782" />
+          <ConnectorPoint PointX="7.7022002159054539" PointY="13.49576476316782" />
+          <ConnectorPoint PointX="7.7022002159054539" PointY="12.748865274053971" />
+          <ConnectorPoint PointX="7.625" PointY="12.35659482252504" />
+        </AssociationConnector>
+        <AssociationConnector Association="ManBoxModel.FK_Category_Translation" />
+        <AssociationConnector Association="ManBoxModel.FK_ProductDescription_Translation" />
+        <AssociationConnector Association="ManBoxModel.FK_ProductDescriptionDetail_Translation" />
+        <EntityTypeShape EntityType="ManBoxModel.Newsletter" Width="1.5" PointX="3.375" PointY="18.375" />
+        <AssociationConnector Association="ManBoxModel.FK_Newsletter_Country" />
+        <AssociationConnector Association="ManBoxModel.FK_Newsletter_Language" />
+        <EntityTypeShape EntityType="ManBoxModel.Coupon" Width="1.5" PointX="2.9523897296527353" PointY="7.8896944261573694" />
+        <AssociationConnector Association="ManBoxModel.FK_SubscriptionDelivery_Coupon" />
+        <EntityTypeShape EntityType="ManBoxModel.Pack" Width="1.5" PointX="0.039541248250539063" PointY="30.355969160029652" />
+        <EntityTypeShape EntityType="ManBoxModel.ProductPack" Width="1.5" PointX="10.838896605576807" PointY="2.8437847806344667" />
+        <AssociationConnector Association="ManBoxModel.FK_Pack_DescTranslation" />
+        <AssociationConnector Association="ManBoxModel.FK_Pack_TitleTranslation" />
+        <AssociationConnector Association="ManBoxModel.FK_ProductPack_Pack" />
+        <AssociationConnector Association="ManBoxModel.FK_ProductPack_Product" />
+        <AssociationConnector Association="ManBoxModel.FK_SubscriptionDeliveryModel_Pack" />
+        <EntityTypeShape EntityType="ManBoxModel.SubscriptionDeliveryMessage" Width="1.5" PointX="6.0375691121619042" PointY="21.649009655066305" />
+        <AssociationConnector Association="ManBoxModel.FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage" />
+        <EntityTypeShape EntityType="ManBoxModel.Gift" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="ManBoxModel.FK_Subscription_Gift" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

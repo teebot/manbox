@@ -1,0 +1,29 @@
+﻿<div id="howItWorksModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="howItWorksModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="howItWorksModalLabel">@Html.LocalizedText("HowItWorksTitle")</h3>
+    </div>
+    <div class="modal-body">
+
+        <h4>@Html.LocalizedText("LandingSecondary1Title")</h4>
+        <p>@Html.LocalizedText("LandingSecondary1Content", new[] { @Url.Action("Compose", "Box") })</p>
+
+        <h4>@Html.LocalizedText("LandingSecondary2Title")</h4>
+        <p>@Html.LocalizedText("LandingSecondary2Content", new[] { @Url.Action("Compose", "Box") })</p>
+
+        <h4>@Html.LocalizedText("LandingSecondary3Title")</h4>
+        <p>@Html.LocalizedText("LandingSecondary3Content", new[] { @Url.Action("Compose", "Box") })</p>
+
+        @if (System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fr")
+        {
+            <a target="_blank" href="@Url.Action("Index", "About")"><i class="icon icon-caret-right"></i> Plus d'information</a><br />
+            <a target="_blank" href="@Url.Action("Faq", "About")"><i class="icon icon-caret-right"></i> Questions fréquentes</a><br />
+            <a data-track-action="chat" class="contact-chat-link account-action hide hidden-phone" onClick="return SnapABug.startLink();" href="#"><i class="icon-comment icon-white"></i> Posez vos questions à un représentant</a>
+        }
+    </div>
+
+<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">@Html.LocalizedText("CloseBtn")</button>
+</div>
+    
+</div>

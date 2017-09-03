@@ -1,0 +1,1684 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ManBoxModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="120" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="120" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Name="BrandId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="HasSizeChart" Type="bit" Nullable="false" />
+          <Property Name="TitleTrId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsVisible" Type="bit" Nullable="false" />
+          <Property Name="Position" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="VatPercentage" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="CurrencyCV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsoCode" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="ShippingFee" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Coupon">
+          <Key>
+            <PropertyRef Name="CouponId" />
+          </Key>
+          <Property Name="CouponId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Percentage" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NumberAvailable" Type="int" Nullable="false" />
+          <Property Name="ExpirationDate" Type="datetime" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gift">
+          <Key>
+            <PropertyRef Name="GiftId" />
+          </Key>
+          <Property Name="GiftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GuestName" Type="nvarchar" MaxLength="50" />
+          <Property Name="GiftMessage" Type="nvarchar" MaxLength="180" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="IsoCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Name="ModelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Reference" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ShopPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SupplierPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="AmountInStock" Type="int" />
+          <Property Name="AdvisedPrice" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Subscribed" Type="bit" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pack">
+          <Key>
+            <PropertyRef Name="PackId" />
+          </Key>
+          <Property Name="PackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TitleTrId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DescrTrId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShopPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SupplierPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="AdvisedPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsAGift" Type="bit" Nullable="false" />
+          <Property Name="GiftVoucherValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Position" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Reference" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsVisible" Type="bit" Nullable="false" />
+          <Property Name="DescriptionDetail" Type="nvarchar" MaxLength="250" />
+          <Property Name="BrandId" Type="int" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="TitleTrId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DescriptionTrId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DescriptionDetailTrId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NumberOfPictures" Type="int" Nullable="false" />
+          <Property Name="VineUrl" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="ProductPack">
+          <Key>
+            <PropertyRef Name="PackId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="PackId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="SubscriptionId" />
+          </Key>
+          <Property Name="SubscriptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Token" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="InvoiceAddressId" Type="int" />
+          <Property Name="ShippingAddressId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsPaused" Type="bit" Nullable="false" />
+          <Property Name="SubscriptionStateCV" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDatetime" Type="datetime" Nullable="false" />
+          <Property Name="NextDeliveryDate" Type="date" />
+          <Property Name="PayPalSenderEmail" Type="nvarchar" MaxLength="250" />
+          <Property Name="PayPalPreapprovalKey" Type="nvarchar" MaxLength="100" />
+          <Property Name="PaymillPayId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymillToken" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymillClientId" Type="nvarchar" MaxLength="50" />
+          <Property Name="GiftId" Type="int" />
+        </EntityType>
+        <EntityType Name="SubscriptionDelivery">
+          <Key>
+            <PropertyRef Name="SubscriptionDeliveryId" />
+          </Key>
+          <Property Name="SubscriptionDeliveryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubscriptionId" Type="int" Nullable="false" />
+          <Property Name="DeliveryDate" Type="date" />
+          <Property Name="DeliveryStateCV" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="QueuedDatetime" Type="datetime" Nullable="false" />
+          <Property Name="DeliveryPaymentStatusCV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ShippingFee" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CouponAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CouponId" Type="int" />
+        </EntityType>
+        <EntityType Name="SubscriptionDeliveryMessage">
+          <Key>
+            <PropertyRef Name="SubscriptionDeliveryId" />
+            <PropertyRef Name="DeliveryMessageTypeCV" />
+          </Key>
+          <Property Name="SubscriptionDeliveryId" Type="int" Nullable="false" />
+          <Property Name="DeliveryMessageTypeCV" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="SentDatetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubscriptionDeliveryModel">
+          <Key>
+            <PropertyRef Name="ModelId" />
+            <PropertyRef Name="SubscriptionDeliveryId" />
+          </Key>
+          <Property Name="ModelId" Type="int" Nullable="false" />
+          <Property Name="SubscriptionDeliveryId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+          <Property Name="PackId" Type="int" />
+        </EntityType>
+        <EntityType Name="Translation">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Name="TranslationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TranslationText">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="TranslationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastModifiedDateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="250" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="250" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="SignInTypeCV" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsOptin" Type="bit" Nullable="false" />
+          <Property Name="CreatedDatetime" Type="datetime" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="64" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Category_Translation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+          <End Role="Category" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="TitleTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Newsletter_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Newsletter" Type="Self.Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Newsletter_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="Newsletter" Type="Self.Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pack_DescTranslation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+          <End Role="Pack" Type="Self.Pack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Pack">
+              <PropertyRef Name="DescrTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pack_TitleTranslation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+          <End Role="Pack" Type="Self.Pack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Pack">
+              <PropertyRef Name="TitleTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Brand">
+          <End Role="Brand" Type="Self.Brand" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Category">
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDescription_Translation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DescriptionTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDescriptionDetail_Translation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DescriptionDetailTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPack_Pack">
+          <End Role="Pack" Type="Self.Pack" Multiplicity="1" />
+          <End Role="ProductPack" Type="Self.ProductPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pack">
+              <PropertyRef Name="PackId" />
+            </Principal>
+            <Dependent Role="ProductPack">
+              <PropertyRef Name="PackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPack_Product">
+          <End Role="Product" Type="Self.Product" Multiplicity="1" />
+          <End Role="ProductPack" Type="Self.ProductPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductPack">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductTitle_Translation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="TitleTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscription_Gift">
+          <End Role="Gift" Type="Self.Gift" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gift">
+              <PropertyRef Name="GiftId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="GiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscription_InvoiceAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="InvoiceAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscription_ShippingAddress">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="ShippingAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscription_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDelivery_Coupon">
+          <End Role="Coupon" Type="Self.Coupon" Multiplicity="0..1" />
+          <End Role="SubscriptionDelivery" Type="Self.SubscriptionDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coupon">
+              <PropertyRef Name="CouponId" />
+            </Principal>
+            <Dependent Role="SubscriptionDelivery">
+              <PropertyRef Name="CouponId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDelivery_Subscription">
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="1" />
+          <End Role="SubscriptionDelivery" Type="Self.SubscriptionDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="SubscriptionId" />
+            </Principal>
+            <Dependent Role="SubscriptionDelivery">
+              <PropertyRef Name="SubscriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage">
+          <End Role="SubscriptionDelivery" Type="Self.SubscriptionDelivery" Multiplicity="1" />
+          <End Role="SubscriptionDeliveryMessage" Type="Self.SubscriptionDeliveryMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriptionDelivery">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryMessage">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDeliveryModel_Model">
+          <End Role="Model" Type="Self.Model" Multiplicity="1" />
+          <End Role="SubscriptionDeliveryModel" Type="Self.SubscriptionDeliveryModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryModel">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDeliveryModel_Pack">
+          <End Role="Pack" Type="Self.Pack" Multiplicity="0..1" />
+          <End Role="SubscriptionDeliveryModel" Type="Self.SubscriptionDeliveryModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pack">
+              <PropertyRef Name="PackId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryModel">
+              <PropertyRef Name="PackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDeliveryModel_SubscriptionDelivery">
+          <End Role="SubscriptionDelivery" Type="Self.SubscriptionDelivery" Multiplicity="1" />
+          <End Role="SubscriptionDeliveryModel" Type="Self.SubscriptionDeliveryModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriptionDelivery">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryModel">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TranslationText_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="TranslationText" Type="Self.TranslationText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="TranslationText">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TranslationText_Translation">
+          <End Role="Translation" Type="Self.Translation" Multiplicity="1" />
+          <End Role="TranslationText" Type="Self.TranslationText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="TranslationText">
+              <PropertyRef Name="TranslationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Language">
+          <End Role="Language" Type="Self.Language" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ManBoxModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brand" EntityType="Self.Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Coupon" EntityType="Self.Coupon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gift" EntityType="Self.Gift" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Language" EntityType="Self.Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Newsletter" EntityType="Self.Newsletter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pack" EntityType="Self.Pack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductPack" EntityType="Self.ProductPack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subscription" EntityType="Self.Subscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionDelivery" EntityType="Self.SubscriptionDelivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionDeliveryMessage" EntityType="Self.SubscriptionDeliveryMessage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubscriptionDeliveryModel" EntityType="Self.SubscriptionDeliveryModel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Translation" EntityType="Self.Translation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TranslationText" EntityType="Self.TranslationText" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Category_Translation" Association="Self.FK_Category_Translation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="Category" EntitySet="Category" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Product" Association="Self.FK_Model_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Newsletter_Country" Association="Self.FK_Newsletter_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Newsletter" EntitySet="Newsletter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Newsletter_Language" Association="Self.FK_Newsletter_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="Newsletter" EntitySet="Newsletter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pack_DescTranslation" Association="Self.FK_Pack_DescTranslation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="Pack" EntitySet="Pack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pack_TitleTranslation" Association="Self.FK_Pack_TitleTranslation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="Pack" EntitySet="Pack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Brand" Association="Self.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDescription_Translation" Association="Self.FK_ProductDescription_Translation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDescriptionDetail_Translation" Association="Self.FK_ProductDescriptionDetail_Translation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPack_Pack" Association="Self.FK_ProductPack_Pack">
+            <End Role="Pack" EntitySet="Pack" />
+            <End Role="ProductPack" EntitySet="ProductPack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPack_Product" Association="Self.FK_ProductPack_Product">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="ProductPack" EntitySet="ProductPack" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductTitle_Translation" Association="Self.FK_ProductTitle_Translation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscription_Gift" Association="Self.FK_Subscription_Gift">
+            <End Role="Gift" EntitySet="Gift" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscription_InvoiceAddress" Association="Self.FK_Subscription_InvoiceAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscription_ShippingAddress" Association="Self.FK_Subscription_ShippingAddress">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscription_User" Association="Self.FK_Subscription_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Subscription" EntitySet="Subscription" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDelivery_Coupon" Association="Self.FK_SubscriptionDelivery_Coupon">
+            <End Role="Coupon" EntitySet="Coupon" />
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDelivery_Subscription" Association="Self.FK_SubscriptionDelivery_Subscription">
+            <End Role="Subscription" EntitySet="Subscription" />
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDelivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage" Association="Self.FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage">
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDelivery" />
+            <End Role="SubscriptionDeliveryMessage" EntitySet="SubscriptionDeliveryMessage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDeliveryModel_Model" Association="Self.FK_SubscriptionDeliveryModel_Model">
+            <End Role="Model" EntitySet="Model" />
+            <End Role="SubscriptionDeliveryModel" EntitySet="SubscriptionDeliveryModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDeliveryModel_Pack" Association="Self.FK_SubscriptionDeliveryModel_Pack">
+            <End Role="Pack" EntitySet="Pack" />
+            <End Role="SubscriptionDeliveryModel" EntitySet="SubscriptionDeliveryModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDeliveryModel_SubscriptionDelivery" Association="Self.FK_SubscriptionDeliveryModel_SubscriptionDelivery">
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDelivery" />
+            <End Role="SubscriptionDeliveryModel" EntitySet="SubscriptionDeliveryModel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TranslationText_Language" Association="Self.FK_TranslationText_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="TranslationText" EntitySet="TranslationText" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TranslationText_Translation" Association="Self.FK_TranslationText_Translation">
+            <End Role="Translation" EntitySet="Translation" />
+            <End Role="TranslationText" EntitySet="TranslationText" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Country" Association="Self.FK_User_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Language" Association="Self.FK_User_Language">
+            <End Role="Language" EntitySet="Language" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ManBoxModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ManBoxEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="ManBoxModel.Category" />
+          <EntitySet Name="Models" EntityType="ManBoxModel.Model" />
+          <EntitySet Name="Products" EntityType="ManBoxModel.Product" />
+          <EntitySet Name="SubscriptionDeliveries" EntityType="ManBoxModel.SubscriptionDelivery" />
+          <EntitySet Name="SubscriptionDeliveryModels" EntityType="ManBoxModel.SubscriptionDeliveryModel" />
+          <AssociationSet Name="FK_Product_Category" Association="ManBoxModel.FK_Product_Category">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Product" Association="ManBoxModel.FK_Model_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Model" EntitySet="Models" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDeliveryModel_Model" Association="ManBoxModel.FK_SubscriptionDeliveryModel_Model">
+            <End Role="Model" EntitySet="Models" />
+            <End Role="SubscriptionDeliveryModel" EntitySet="SubscriptionDeliveryModels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDeliveryModel_SubscriptionDelivery" Association="ManBoxModel.FK_SubscriptionDeliveryModel_SubscriptionDelivery">
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDeliveries" />
+            <End Role="SubscriptionDeliveryModel" EntitySet="SubscriptionDeliveryModels" />
+          </AssociationSet>
+          <EntitySet Name="Countries" EntityType="ManBoxModel.Country" />
+          <EntitySet Name="Users" EntityType="ManBoxModel.User" />
+          <AssociationSet Name="FK_User_Country" Association="ManBoxModel.FK_User_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="Subscriptions" EntityType="ManBoxModel.Subscription" />
+          <AssociationSet Name="FK_Subscription_User" Association="ManBoxModel.FK_Subscription_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDelivery_Subscription" Association="ManBoxModel.FK_SubscriptionDelivery_Subscription">
+            <End Role="Subscription" EntitySet="Subscriptions" />
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDeliveries" />
+          </AssociationSet>
+          <EntitySet Name="Addresses" EntityType="ManBoxModel.Address" />
+          <AssociationSet Name="FK_Subscription_InvoiceAddress" Association="ManBoxModel.FK_Subscription_InvoiceAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subscription_ShippingAddress" Association="ManBoxModel.FK_Subscription_ShippingAddress">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <EntitySet Name="Brands" EntityType="ManBoxModel.Brand" />
+          <AssociationSet Name="FK_Product_Brand" Association="ManBoxModel.FK_Product_Brand">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Languages" EntityType="ManBoxModel.Language" />
+          <EntitySet Name="Translations" EntityType="ManBoxModel.Translation" />
+          <EntitySet Name="TranslationTexts" EntityType="ManBoxModel.TranslationText" />
+          <AssociationSet Name="FK_TranslationText_Language" Association="ManBoxModel.FK_TranslationText_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="TranslationText" EntitySet="TranslationTexts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Product_Translation" Association="ManBoxModel.FK_Product_Translation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TranslationText_Translation" Association="ManBoxModel.FK_TranslationText_Translation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="TranslationText" EntitySet="TranslationTexts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Language" Association="ManBoxModel.FK_User_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_Translation" Association="ManBoxModel.FK_Category_Translation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="Category" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDescription_Translation" Association="ManBoxModel.FK_ProductDescription_Translation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductDescriptionDetail_Translation" Association="ManBoxModel.FK_ProductDescriptionDetail_Translation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Newsletters" EntityType="ManBoxModel.Newsletter" />
+          <AssociationSet Name="FK_Newsletter_Country" Association="ManBoxModel.FK_Newsletter_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Newsletter" EntitySet="Newsletters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Newsletter_Language" Association="ManBoxModel.FK_Newsletter_Language">
+            <End Role="Language" EntitySet="Languages" />
+            <End Role="Newsletter" EntitySet="Newsletters" />
+          </AssociationSet>
+          <EntitySet Name="Coupons" EntityType="ManBoxModel.Coupon" />
+          <AssociationSet Name="FK_SubscriptionDelivery_Coupon" Association="ManBoxModel.FK_SubscriptionDelivery_Coupon">
+            <End Role="Coupon" EntitySet="Coupons" />
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDeliveries" />
+          </AssociationSet>
+          <EntitySet Name="Packs" EntityType="ManBoxModel.Pack" />
+          <EntitySet Name="ProductPacks" EntityType="ManBoxModel.ProductPack" />
+          <AssociationSet Name="FK_Pack_DescTranslation" Association="ManBoxModel.FK_Pack_DescTranslation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="Pack" EntitySet="Packs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pack_TitleTranslation" Association="ManBoxModel.FK_Pack_TitleTranslation">
+            <End Role="Translation" EntitySet="Translations" />
+            <End Role="Pack" EntitySet="Packs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPack_Pack" Association="ManBoxModel.FK_ProductPack_Pack">
+            <End Role="Pack" EntitySet="Packs" />
+            <End Role="ProductPack" EntitySet="ProductPacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductPack_Product" Association="ManBoxModel.FK_ProductPack_Product">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="ProductPack" EntitySet="ProductPacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubscriptionDeliveryModel_Pack" Association="ManBoxModel.FK_SubscriptionDeliveryModel_Pack">
+            <End Role="Pack" EntitySet="Packs" />
+            <End Role="SubscriptionDeliveryModel" EntitySet="SubscriptionDeliveryModels" />
+          </AssociationSet>
+          <EntitySet Name="SubscriptionDeliveryMessages" EntityType="ManBoxModel.SubscriptionDeliveryMessage" />
+          <AssociationSet Name="FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage" Association="ManBoxModel.FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage">
+            <End Role="SubscriptionDelivery" EntitySet="SubscriptionDeliveries" />
+            <End Role="SubscriptionDeliveryMessage" EntitySet="SubscriptionDeliveryMessages" />
+          </AssociationSet>
+          <EntitySet Name="Gifts" EntityType="ManBoxModel.Gift" />
+          <AssociationSet Name="FK_Subscription_Gift" Association="ManBoxModel.FK_Subscription_Gift">
+            <End Role="Gift" EntitySet="Gifts" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="ManBoxModel.FK_Product_Category" FromRole="Category" ToRole="Product" />
+          <Property Type="Boolean" Name="HasSizeChart" Nullable="false" />
+          <Property Type="Guid" Name="TitleTrId" Nullable="false" />
+          <NavigationProperty Name="Translation" Relationship="ManBoxModel.FK_Category_Translation" FromRole="Category" ToRole="Translation" />
+          <Property Type="Boolean" Name="IsVisible" Nullable="false" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="ModelId" />
+          </Key>
+          <Property Type="Int32" Name="ModelId" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Reference" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ShopPrice" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Product" Relationship="ManBoxModel.FK_Model_Product" FromRole="Model" ToRole="Product" />
+          <NavigationProperty Name="SubscriptionDeliveryModels" Relationship="ManBoxModel.FK_SubscriptionDeliveryModel_Model" FromRole="Model" ToRole="SubscriptionDeliveryModel" />
+          <Property Type="Decimal" Name="SupplierPrice" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="AmountInStock" />
+          <Property Type="Decimal" Name="AdvisedPrice" Precision="18" Scale="2" />
+          
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Type="Int32" Name="ProductId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsVisible" Nullable="false" />
+          <NavigationProperty Name="Category" Relationship="ManBoxModel.FK_Product_Category" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Models" Relationship="ManBoxModel.FK_Model_Product" FromRole="Product" ToRole="Model" />
+          <Property Type="String" Name="Reference" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Type="String" Name="DescriptionDetail" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BrandId" />
+          <NavigationProperty Name="Brand" Relationship="ManBoxModel.FK_Product_Brand" FromRole="Product" ToRole="Brand" />
+          <Property Type="Int32" Name="Position" Nullable="false" />
+          <Property Type="Guid" Name="TitleTrId" Nullable="false" />
+          <NavigationProperty Name="Translation" Relationship="ManBoxModel.FK_Product_Translation" FromRole="Product" ToRole="Translation" />
+          <Property Type="Guid" Name="DescriptionTrId" Nullable="false" />
+          <NavigationProperty Name="Translation1" Relationship="ManBoxModel.FK_ProductDescription_Translation" FromRole="Product" ToRole="Translation" />
+          <Property Type="Guid" Name="DescriptionDetailTrId" Nullable="false" />
+          <NavigationProperty Name="Translation11" Relationship="ManBoxModel.FK_ProductDescriptionDetail_Translation" FromRole="Product" ToRole="Translation" />
+          <Property Type="Int32" Name="NumberOfPictures" Nullable="false" />
+          <Property Type="String" Name="VineUrl" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProductPacks" Relationship="ManBoxModel.FK_ProductPack_Product" FromRole="Product" ToRole="ProductPack" />
+        </EntityType>
+        <EntityType Name="SubscriptionDelivery">
+          <Key>
+            <PropertyRef Name="SubscriptionDeliveryId" />
+          </Key>
+          <Property Type="Int32" Name="SubscriptionDeliveryId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="SubscriptionId" Nullable="false" />
+          <Property Type="DateTime" Name="DeliveryDate" Precision="0" />
+          <Property Type="DateTime" Name="QueuedDatetime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SubscriptionDeliveryModels" Relationship="ManBoxModel.FK_SubscriptionDeliveryModel_SubscriptionDelivery" FromRole="SubscriptionDelivery" ToRole="SubscriptionDeliveryModel" />
+          <Property Type="String" Name="DeliveryStateCV" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subscription" Relationship="ManBoxModel.FK_SubscriptionDelivery_Subscription" FromRole="SubscriptionDelivery" ToRole="Subscription" />
+          <Property Type="String" Name="DeliveryPaymentStatusCV" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ShippingFee" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CouponAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="CouponId" />
+          <NavigationProperty Name="Coupon" Relationship="ManBoxModel.FK_SubscriptionDelivery_Coupon" FromRole="SubscriptionDelivery" ToRole="Coupon" />
+          <NavigationProperty Name="SubscriptionDeliveryMessages" Relationship="ManBoxModel.FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage" FromRole="SubscriptionDelivery" ToRole="SubscriptionDeliveryMessage" />
+        </EntityType>
+        <EntityType Name="SubscriptionDeliveryModel">
+          <Key>
+            <PropertyRef Name="ModelId" />
+            <PropertyRef Name="SubscriptionDeliveryId" />
+          </Key>
+          <Property Type="Int32" Name="ModelId" Nullable="false" />
+          <Property Type="Int32" Name="SubscriptionDeliveryId" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <NavigationProperty Name="Model" Relationship="ManBoxModel.FK_SubscriptionDeliveryModel_Model" FromRole="SubscriptionDeliveryModel" ToRole="Model" />
+          <NavigationProperty Name="SubscriptionDelivery" Relationship="ManBoxModel.FK_SubscriptionDeliveryModel_SubscriptionDelivery" FromRole="SubscriptionDeliveryModel" ToRole="SubscriptionDelivery" />
+          <Property Type="Int32" Name="PackId" />
+          <NavigationProperty Name="Pack" Relationship="ManBoxModel.FK_SubscriptionDeliveryModel_Pack" FromRole="SubscriptionDeliveryModel" ToRole="Pack" />
+        </EntityType>
+        <Association Name="FK_Product_Category">
+          <End Type="ManBoxModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="ManBoxModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Product">
+          <End Type="ManBoxModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ManBoxModel.Model" Role="Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDeliveryModel_Model">
+          <End Type="ManBoxModel.Model" Role="Model" Multiplicity="1" />
+          <End Type="ManBoxModel.SubscriptionDeliveryModel" Role="SubscriptionDeliveryModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Model">
+              <PropertyRef Name="ModelId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryModel">
+              <PropertyRef Name="ModelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDeliveryModel_SubscriptionDelivery">
+          <End Type="ManBoxModel.SubscriptionDelivery" Role="SubscriptionDelivery" Multiplicity="1" />
+          <End Type="ManBoxModel.SubscriptionDeliveryModel" Role="SubscriptionDeliveryModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriptionDelivery">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryModel">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="VatPercentage" Nullable="false" Precision="5" Scale="2" />
+          <Property Type="String" Name="CurrencyCV" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IsoCode" Nullable="false" MaxLength="2" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="ManBoxModel.FK_User_Country" FromRole="Country" ToRole="User" />
+          <Property Type="Decimal" Name="ShippingFee" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Newsletters" Relationship="ManBoxModel.FK_Newsletter_Country" FromRole="Country" ToRole="Newsletter" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="SignInTypeCV" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsOptin" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedDatetime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Country" Relationship="ManBoxModel.FK_User_Country" FromRole="User" ToRole="Country" />
+          <NavigationProperty Name="Subscriptions" Relationship="ManBoxModel.FK_Subscription_User" FromRole="User" ToRole="Subscription" />
+          <Property Type="String" Name="Phone" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="ManBoxModel.FK_User_Language" FromRole="User" ToRole="Language" />
+        </EntityType>
+        <Association Name="FK_User_Country">
+          <End Type="ManBoxModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="ManBoxModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="SubscriptionId" />
+          </Key>
+          <Property Type="Int32" Name="SubscriptionId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="String" Name="Token" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="InvoiceAddressId" />
+          <Property Type="Int32" Name="ShippingAddressId" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="Boolean" Name="IsPaused" Nullable="false" />
+          <Property Type="String" Name="SubscriptionStateCV" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDatetime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="NextDeliveryDate" Precision="0" />
+          <NavigationProperty Name="User" Relationship="ManBoxModel.FK_Subscription_User" FromRole="Subscription" ToRole="User" />
+          <NavigationProperty Name="SubscriptionDeliveries" Relationship="ManBoxModel.FK_SubscriptionDelivery_Subscription" FromRole="Subscription" ToRole="SubscriptionDelivery" />
+          <NavigationProperty Name="Address" Relationship="ManBoxModel.FK_Subscription_InvoiceAddress" FromRole="Subscription" ToRole="Address" />
+          <NavigationProperty Name="ShippingAddress" Relationship="ManBoxModel.FK_Subscription_ShippingAddress" FromRole="Subscription" ToRole="Address" />
+          <Property Type="String" Name="PayPalSenderEmail" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PayPalPreapprovalKey" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaymillPayId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaymillToken" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaymillClientId" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GiftId" Type="Int32" />
+          <NavigationProperty Name="Gift" Relationship="ManBoxModel.FK_Subscription_Gift" FromRole="Subscription" ToRole="Gift" />
+        </EntityType>
+        <Association Name="FK_Subscription_User">
+          <End Type="ManBoxModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="ManBoxModel.Subscription" Role="Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDelivery_Subscription">
+          <End Type="ManBoxModel.Subscription" Role="Subscription" Multiplicity="1" />
+          <End Type="ManBoxModel.SubscriptionDelivery" Role="SubscriptionDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subscription">
+              <PropertyRef Name="SubscriptionId" />
+            </Principal>
+            <Dependent Role="SubscriptionDelivery">
+              <PropertyRef Name="SubscriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Type="Int32" Name="AddressId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Street" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PostalCode" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <NavigationProperty Name="Subscriptions" Relationship="ManBoxModel.FK_Subscription_InvoiceAddress" FromRole="Address" ToRole="Subscription" />
+          <NavigationProperty Name="Subscriptions1" Relationship="ManBoxModel.FK_Subscription_ShippingAddress" FromRole="Address" ToRole="Subscription" />
+          <Property Type="String" Name="Province" Nullable="false" MaxLength="120" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Subscription_InvoiceAddress">
+          <End Type="ManBoxModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="ManBoxModel.Subscription" Role="Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="InvoiceAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Subscription_ShippingAddress">
+          <End Type="ManBoxModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="ManBoxModel.Subscription" Role="Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="ShippingAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="BrandId" />
+          </Key>
+          <Property Type="Int32" Name="BrandId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="ManBoxModel.FK_Product_Brand" FromRole="Brand" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Product_Brand">
+          <End Type="ManBoxModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="ManBoxModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="BrandId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <Property Type="String" Name="IsoCode" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TranslationTexts" Relationship="ManBoxModel.FK_TranslationText_Language" FromRole="Language" ToRole="TranslationText" />
+          <NavigationProperty Name="Users" Relationship="ManBoxModel.FK_User_Language" FromRole="Language" ToRole="User" />
+          <NavigationProperty Name="Newsletters" Relationship="ManBoxModel.FK_Newsletter_Language" FromRole="Language" ToRole="Newsletter" />
+        </EntityType>
+        <EntityType Name="Translation">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+          </Key>
+          <Property Type="Guid" Name="TranslationId" Nullable="false" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Products" Relationship="ManBoxModel.FK_Product_Translation" FromRole="Translation" ToRole="Product" />
+          <NavigationProperty Name="TranslationTexts" Relationship="ManBoxModel.FK_TranslationText_Translation" FromRole="Translation" ToRole="TranslationText" />
+          <NavigationProperty Name="Categories" Relationship="ManBoxModel.FK_Category_Translation" FromRole="Translation" ToRole="Category" />
+          <NavigationProperty Name="Products1" Relationship="ManBoxModel.FK_ProductDescription_Translation" FromRole="Translation" ToRole="Product" />
+          <NavigationProperty Name="Products11" Relationship="ManBoxModel.FK_ProductDescriptionDetail_Translation" FromRole="Translation" ToRole="Product" />
+          <NavigationProperty Name="Packs" Relationship="ManBoxModel.FK_Pack_DescTranslation" FromRole="Translation" ToRole="Pack" />
+          <NavigationProperty Name="Packs1" Relationship="ManBoxModel.FK_Pack_TitleTranslation" FromRole="Translation" ToRole="Pack" />
+          </EntityType>
+        <EntityType Name="TranslationText">
+          <Key>
+            <PropertyRef Name="TranslationId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Type="Guid" Name="TranslationId" Nullable="false" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LastModifiedDateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Language" Relationship="ManBoxModel.FK_TranslationText_Language" FromRole="TranslationText" ToRole="Language" />
+          <NavigationProperty Name="Translation" Relationship="ManBoxModel.FK_TranslationText_Translation" FromRole="TranslationText" ToRole="Translation" />
+        </EntityType>
+        <Association Name="FK_TranslationText_Language">
+          <End Type="ManBoxModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="ManBoxModel.TranslationText" Role="TranslationText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="TranslationText">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Product_Translation">
+          <End Type="ManBoxModel.Translation" Role="Translation" Multiplicity="1" />
+          <End Type="ManBoxModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="TitleTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TranslationText_Translation">
+          <End Type="ManBoxModel.Translation" Role="Translation" Multiplicity="1" />
+          <End Type="ManBoxModel.TranslationText" Role="TranslationText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="TranslationText">
+              <PropertyRef Name="TranslationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Language">
+          <End Type="ManBoxModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="ManBoxModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_Translation">
+          <End Type="ManBoxModel.Translation" Role="Translation" Multiplicity="1" />
+          <End Type="ManBoxModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="TitleTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDescription_Translation">
+          <End Type="ManBoxModel.Translation" Role="Translation" Multiplicity="1" />
+          <End Type="ManBoxModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DescriptionTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductDescriptionDetail_Translation">
+          <End Type="ManBoxModel.Translation" Role="Translation" Multiplicity="1" />
+          <End Type="ManBoxModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="DescriptionDetailTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Subscribed" Nullable="false" />
+          <Property Type="Int32" Name="LanguageId" Nullable="false" />
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="ManBoxModel.FK_Newsletter_Country" FromRole="Newsletter" ToRole="Country" />
+          <NavigationProperty Name="Language" Relationship="ManBoxModel.FK_Newsletter_Language" FromRole="Newsletter" ToRole="Language" />
+        </EntityType>
+        <Association Name="FK_Newsletter_Country">
+          <End Type="ManBoxModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="ManBoxModel.Newsletter" Role="Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Newsletter_Language">
+          <End Type="ManBoxModel.Language" Role="Language" Multiplicity="1" />
+          <End Type="ManBoxModel.Newsletter" Role="Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Language">
+              <PropertyRef Name="LanguageId" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Coupon">
+          <Key>
+            <PropertyRef Name="CouponId" />
+          </Key>
+          <Property Type="Int32" Name="CouponId" Nullable="false" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Percentage" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Amount" Precision="18" Scale="2" />
+          <Property Type="Int32" Name="NumberAvailable" Nullable="false" />
+          <Property Type="DateTime" Name="ExpirationDate" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
+          <NavigationProperty Name="SubscriptionDeliveries" Relationship="ManBoxModel.FK_SubscriptionDelivery_Coupon" FromRole="Coupon" ToRole="SubscriptionDelivery" />
+        </EntityType>
+        <Association Name="FK_SubscriptionDelivery_Coupon">
+          <End Type="ManBoxModel.Coupon" Role="Coupon" Multiplicity="0..1" />
+          <End Type="ManBoxModel.SubscriptionDelivery" Role="SubscriptionDelivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coupon">
+              <PropertyRef Name="CouponId" />
+            </Principal>
+            <Dependent Role="SubscriptionDelivery">
+              <PropertyRef Name="CouponId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Pack">
+          <Key>
+            <PropertyRef Name="PackId" />
+          </Key>
+          <Property Type="Int32" Name="PackId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Guid" Name="TitleTrId" Nullable="false" />
+          <Property Type="Guid" Name="DescrTrId" Nullable="false" />
+          <Property Type="Decimal" Name="ShopPrice" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SupplierPrice" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="Translation" Relationship="ManBoxModel.FK_Pack_DescTranslation" FromRole="Pack" ToRole="Translation" />
+          <NavigationProperty Name="Translation1" Relationship="ManBoxModel.FK_Pack_TitleTranslation" FromRole="Pack" ToRole="Translation" />
+          <NavigationProperty Name="ProductPacks" Relationship="ManBoxModel.FK_ProductPack_Pack" FromRole="Pack" ToRole="ProductPack" />
+          <NavigationProperty Name="SubscriptionDeliveryModels" Relationship="ManBoxModel.FK_SubscriptionDeliveryModel_Pack" FromRole="Pack" ToRole="SubscriptionDeliveryModel" />
+          <Property Type="Decimal" Name="AdvisedPrice" Precision="18" Scale="2" />
+          <Property Name="IsAGift" Type="Boolean" Nullable="false" />
+          <Property Name="GiftVoucherValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductPack">
+          <Key>
+            <PropertyRef Name="PackId" />
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Type="Int32" Name="PackId" Nullable="false" />
+          <Property Type="Int32" Name="ProductId" Nullable="false" />
+          <Property Type="Int32" Name="Quantity" Nullable="false" />
+          <NavigationProperty Name="Pack" Relationship="ManBoxModel.FK_ProductPack_Pack" FromRole="ProductPack" ToRole="Pack" />
+          <NavigationProperty Name="Product" Relationship="ManBoxModel.FK_ProductPack_Product" FromRole="ProductPack" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_Pack_DescTranslation">
+          <End Type="ManBoxModel.Translation" Role="Translation" Multiplicity="1" />
+          <End Type="ManBoxModel.Pack" Role="Pack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Pack">
+              <PropertyRef Name="DescrTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pack_TitleTranslation">
+          <End Type="ManBoxModel.Translation" Role="Translation" Multiplicity="1" />
+          <End Type="ManBoxModel.Pack" Role="Pack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Translation">
+              <PropertyRef Name="TranslationId" />
+            </Principal>
+            <Dependent Role="Pack">
+              <PropertyRef Name="TitleTrId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPack_Pack">
+          <End Type="ManBoxModel.Pack" Role="Pack" Multiplicity="1" />
+          <End Type="ManBoxModel.ProductPack" Role="ProductPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pack">
+              <PropertyRef Name="PackId" />
+            </Principal>
+            <Dependent Role="ProductPack">
+              <PropertyRef Name="PackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductPack_Product">
+          <End Type="ManBoxModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="ManBoxModel.ProductPack" Role="ProductPack" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="ProductPack">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubscriptionDeliveryModel_Pack">
+          <End Type="ManBoxModel.Pack" Role="Pack" Multiplicity="0..1" />
+          <End Type="ManBoxModel.SubscriptionDeliveryModel" Role="SubscriptionDeliveryModel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pack">
+              <PropertyRef Name="PackId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryModel">
+              <PropertyRef Name="PackId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SubscriptionDeliveryMessage">
+          <Key>
+            <PropertyRef Name="SubscriptionDeliveryId" />
+            <PropertyRef Name="DeliveryMessageTypeCV" />
+          </Key>
+          <Property Type="Int32" Name="SubscriptionDeliveryId" Nullable="false" />
+          <Property Type="String" Name="DeliveryMessageTypeCV" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="SentDatetime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="SubscriptionDelivery" Relationship="ManBoxModel.FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage" FromRole="SubscriptionDeliveryMessage" ToRole="SubscriptionDelivery" />
+        </EntityType>
+        <Association Name="FK_SubscriptionDeliveryMessage_SubscriptionDeliveryMessage">
+          <End Type="ManBoxModel.SubscriptionDelivery" Role="SubscriptionDelivery" Multiplicity="1" />
+          <End Type="ManBoxModel.SubscriptionDeliveryMessage" Role="SubscriptionDeliveryMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubscriptionDelivery">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Principal>
+            <Dependent Role="SubscriptionDeliveryMessage">
+              <PropertyRef Name="SubscriptionDeliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Gift">
+          <Key>
+            <PropertyRef Name="GiftId" />
+          </Key>
+          <Property Name="GiftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GuestName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GiftMessage" Type="String" MaxLength="180" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Subscriptions" Relationship="ManBoxModel.FK_Subscription_Gift" FromRole="Gift" ToRole="Subscription" />
+        </EntityType>
+        <Association Name="FK_Subscription_Gift">
+          <End Type="ManBoxModel.Gift" Role="Gift" Multiplicity="0..1" />
+          <End Type="ManBoxModel.Subscription" Role="Subscription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gift">
+              <PropertyRef Name="GiftId" />
+            </Principal>
+            <Dependent Role="Subscription">
+              <PropertyRef Name="GiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ManBoxModelStoreContainer" CdmEntityContainer="ManBoxEntities">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ManBoxModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="TitleTrId" ColumnName="TitleTrId" />
+                <ScalarProperty Name="HasSizeChart" ColumnName="HasSizeChart" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Models">
+            <EntityTypeMapping TypeName="ManBoxModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                
+                <ScalarProperty Name="AdvisedPrice" ColumnName="AdvisedPrice" />
+                <ScalarProperty Name="AmountInStock" ColumnName="AmountInStock" />
+                <ScalarProperty Name="SupplierPrice" ColumnName="SupplierPrice" />
+                <ScalarProperty Name="ShopPrice" ColumnName="ShopPrice" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="ManBoxModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="VineUrl" ColumnName="VineUrl" />
+                <ScalarProperty Name="NumberOfPictures" ColumnName="NumberOfPictures" />
+                <ScalarProperty Name="DescriptionDetailTrId" ColumnName="DescriptionDetailTrId" />
+                <ScalarProperty Name="DescriptionTrId" ColumnName="DescriptionTrId" />
+                <ScalarProperty Name="TitleTrId" ColumnName="TitleTrId" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="DescriptionDetail" ColumnName="DescriptionDetail" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionDeliveries">
+            <EntityTypeMapping TypeName="ManBoxModel.SubscriptionDelivery">
+              <MappingFragment StoreEntitySet="SubscriptionDelivery">
+                <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+                <ScalarProperty Name="CouponAmount" ColumnName="CouponAmount" />
+                <ScalarProperty Name="ShippingFee" ColumnName="ShippingFee" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="DeliveryPaymentStatusCV" ColumnName="DeliveryPaymentStatusCV" />
+                <ScalarProperty Name="DeliveryStateCV" ColumnName="DeliveryStateCV" />
+                <ScalarProperty Name="QueuedDatetime" ColumnName="QueuedDatetime" />
+                <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+                <ScalarProperty Name="SubscriptionDeliveryId" ColumnName="SubscriptionDeliveryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionDeliveryModels">
+            <EntityTypeMapping TypeName="ManBoxModel.SubscriptionDeliveryModel">
+              <MappingFragment StoreEntitySet="SubscriptionDeliveryModel">
+                <ScalarProperty Name="PackId" ColumnName="PackId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SubscriptionDeliveryId" ColumnName="SubscriptionDeliveryId" />
+                <ScalarProperty Name="ModelId" ColumnName="ModelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ManBoxModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="ShippingFee" ColumnName="ShippingFee" />
+                <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+                <ScalarProperty Name="CurrencyCV" ColumnName="CurrencyCV" />
+                <ScalarProperty Name="VatPercentage" ColumnName="VatPercentage" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ManBoxModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+                <ScalarProperty Name="IsOptin" ColumnName="IsOptin" />
+                <ScalarProperty Name="SignInTypeCV" ColumnName="SignInTypeCV" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subscriptions">
+            <EntityTypeMapping TypeName="ManBoxModel.Subscription">
+              <MappingFragment StoreEntitySet="Subscription">
+                <ScalarProperty Name="GiftId" ColumnName="GiftId" />
+                <ScalarProperty Name="PaymillClientId" ColumnName="PaymillClientId" />
+                <ScalarProperty Name="PaymillToken" ColumnName="PaymillToken" />
+                <ScalarProperty Name="PaymillPayId" ColumnName="PaymillPayId" />
+                <ScalarProperty Name="PayPalPreapprovalKey" ColumnName="PayPalPreapprovalKey" />
+                <ScalarProperty Name="PayPalSenderEmail" ColumnName="PayPalSenderEmail" />
+                <ScalarProperty Name="NextDeliveryDate" ColumnName="NextDeliveryDate" />
+                <ScalarProperty Name="CreatedDatetime" ColumnName="CreatedDatetime" />
+                <ScalarProperty Name="SubscriptionStateCV" ColumnName="SubscriptionStateCV" />
+                <ScalarProperty Name="IsPaused" ColumnName="IsPaused" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ShippingAddressId" ColumnName="ShippingAddressId" />
+                <ScalarProperty Name="InvoiceAddressId" ColumnName="InvoiceAddressId" />
+                <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="SubscriptionId" ColumnName="SubscriptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="ManBoxModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="ManBoxModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="ManBoxModel.Language">
+              <MappingFragment StoreEntitySet="Language">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsoCode" ColumnName="IsoCode" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Translations">
+            <EntityTypeMapping TypeName="ManBoxModel.Translation">
+              <MappingFragment StoreEntitySet="Translation">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TranslationTexts">
+            <EntityTypeMapping TypeName="ManBoxModel.TranslationText">
+              <MappingFragment StoreEntitySet="TranslationText">
+                <ScalarProperty Name="LastModifiedDateTime" ColumnName="LastModifiedDateTime" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="TranslationId" ColumnName="TranslationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Newsletters">
+            <EntityTypeMapping TypeName="ManBoxModel.Newsletter">
+              <MappingFragment StoreEntitySet="Newsletter">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Subscribed" ColumnName="Subscribed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Coupons">
+            <EntityTypeMapping TypeName="ManBoxModel.Coupon">
+              <MappingFragment StoreEntitySet="Coupon">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="NumberAvailable" ColumnName="NumberAvailable" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="CouponId" ColumnName="CouponId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Packs">
+            <EntityTypeMapping TypeName="ManBoxModel.Pack">
+              <MappingFragment StoreEntitySet="Pack">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="GiftVoucherValue" ColumnName="GiftVoucherValue" />
+                <ScalarProperty Name="IsAGift" ColumnName="IsAGift" />
+                <ScalarProperty Name="AdvisedPrice" ColumnName="AdvisedPrice" />
+                <ScalarProperty Name="SupplierPrice" ColumnName="SupplierPrice" />
+                <ScalarProperty Name="ShopPrice" ColumnName="ShopPrice" />
+                <ScalarProperty Name="DescrTrId" ColumnName="DescrTrId" />
+                <ScalarProperty Name="TitleTrId" ColumnName="TitleTrId" />
+                <ScalarProperty Name="PackId" ColumnName="PackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductPacks">
+            <EntityTypeMapping TypeName="ManBoxModel.ProductPack">
+              <MappingFragment StoreEntitySet="ProductPack">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="PackId" ColumnName="PackId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubscriptionDeliveryMessages">
+            <EntityTypeMapping TypeName="ManBoxModel.SubscriptionDeliveryMessage">
+              <MappingFragment StoreEntitySet="SubscriptionDeliveryMessage">
+                <ScalarProperty Name="SentDatetime" ColumnName="SentDatetime" />
+                <ScalarProperty Name="DeliveryMessageTypeCV" ColumnName="DeliveryMessageTypeCV" />
+                <ScalarProperty Name="SubscriptionDeliveryId" ColumnName="SubscriptionDeliveryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gifts">
+            <EntityTypeMapping TypeName="ManBoxModel.Gift">
+              <MappingFragment StoreEntitySet="Gift">
+                <ScalarProperty Name="GiftMessage" ColumnName="GiftMessage" />
+                <ScalarProperty Name="GuestName" ColumnName="GuestName" />
+                <ScalarProperty Name="GiftId" ColumnName="GiftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

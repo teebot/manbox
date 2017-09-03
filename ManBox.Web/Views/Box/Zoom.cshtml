@@ -1,0 +1,23 @@
+﻿
+@model ManBox.Model.ViewModels.ProductVisualsViewModel
+
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+<div class="zoom-area">
+    
+    <img src="@Url.CdnPath()/products/@(Model.ProductReference + "_L.jpg")" alt="zoom picture" />
+</div>
+
+<div class="product-thumbnails hidden-phone">
+    <div class="thumb-picture thumb-active"><img width="100" src="@Url.CdnPath()/products/@(Model.ProductReference + "_S.jpg")" data-zoom-src="@Url.CdnPath()/products/@(Model.ProductReference + "_L.jpg")" /></div>
+    
+    @if(!string.IsNullOrEmpty(Model.VineUrl))
+    {
+        <div class="thumb-video"><img src="@Url.CdnPath()/products/@(Model.ProductReference + "_SV.jpg")" alt="vine video" data-vine-src="@Model.VineUrl" /></div>
+    }
+    
+    @for (var i = 1; i <= Model.NumberOfPictures; i++)
+    { 
+        <div class="thumb-picture"><img width="100" src="@Url.CdnPath()/products/@(Model.ProductReference + "_" + i + "_S.jpg")" data-zoom-src="@Url.CdnPath()/products/@(Model.ProductReference + "_" + i + "_L.jpg")" /></div>
+    }
+</div>

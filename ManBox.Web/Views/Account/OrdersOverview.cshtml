@@ -1,0 +1,106 @@
+﻿@model OrdersOverviewViewModel
+
+<div class="container">
+<div class="row sheet">
+    <div class="span3">
+        @Html.Partial("_AccountMenu", new AccountMenuViewModel() { ActiveMenuItem = AccountMenuItem.Orders })
+    </div>
+    <div class="span9">
+
+    <h3>@Html.LocalizedText("YourOrderHistory")</h3> 
+    <table class="order-overview-table table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>@Html.LocalizedText("OrderReference")</th>
+            <th>@Html.LocalizedText("Date")</th>
+            <th>@Html.LocalizedText("Status")</th>
+            <th>@Html.LocalizedText("Amount")</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    @foreach (var o in Model.Orders)
+    { 
+        <tr class="warning">
+            <td>@o.DeliveryId</td>
+            <td @(o.DeliveryState == CodeValues.DeliveryState.Pending ? "class=pending-delivery-date" :  "")>@o.Date.Value.ToString("d MMMM yyyy")</td>
+            <td><span class="label @(o.DeliveryState == CodeValues.DeliveryState.Pending ? "label-warning" :  "")">@Html.LocalizedCodeValue("DeliveryState", o.DeliveryState)</span></td>
+            <td>@o.Amount.ToCurrency()</td>
+            <td>
+                <a href="#" class="show-order-detail">detail &nbsp;<i class="icon-chevron-down"></i></a>
+            </td>
+        </tr>
+        
+        <tr class="order-detail @(o.DeliveryState == CodeValues.DeliveryState.Pending || o.DeliveryState == CodeValues.DeliveryState.Processing  ? "show-detail-override" : "")">
+            <td colspan="5">
+                <table class="table table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                            <th>@Html.LocalizedText("Article")</th>
+                            <th>@Html.LocalizedText("Quantity")</th>
+                            <th>@Html.LocalizedText("Price")</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var p in o.Products)
+                    { 
+                        <tr>
+                            <td><img width="80" src="@(Url.CdnPath() + "/products/" + p.ProductReference + ".jpg")" alt="@p.ProductName" /> @p.ProductName @p.ModelName</td>
+                            <td>@p.Quantity</td>
+                            <td>@p.TotalPrice</td>
+                        </tr>
+                    }
+
+                        @if (o.DeliveryState == CodeValues.DeliveryState.Pending) { 
+                        <tr>
+                            <td colspan="3" class="delivery-actions">
+                                <a class="pull-left" href="@Url.Action("Compose", "Box")">@Html.LocalizedText("Modify")</a>
+                                <a href="#" class="btn btn-info btn-snooze">@Html.LocalizedText("DeliveryBtnSnooze") &nbsp;<i class="icon-time"></i></a> 
+                                <a href="#" class="btn btn-info btn-rush">@Html.LocalizedText("DeliveryBtnRush") &nbsp;<i class="icon-forward"></i></a>
+                            </td>
+                        </tr>
+                        <tr class="delivery-actions-options">
+                            <td colspan="3">
+                                <div class="snooze">
+                                    <form class="form-inline" method="post" action="@Url.Action("ReScheduleDelivery")">
+                                        @Html.Hidden("deliveryId", o.DeliveryId)
+                                        @Html.Hidden("rushNow", false)
+                                        @Html.LocalizedText("AccountSnoozeOfLbl") <select name="snoozeWeeks" class="input-small">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>4</option>
+                                            <option>6</option>
+                                            <option>8</option>
+                                        </select> @Html.LocalizedText("AccountSnoozeWeeks")
+                                        <button type="submit" class="btn btn-primary btn-success pull-right">@Html.LocalizedText("Confirm")</button>
+                                    </form>
+                                </div>
+                                <div class="rush">
+                                    <form class="form-inline" method="post" action="@Url.Action("ReScheduleDelivery")">
+                                        @Html.Hidden("deliveryId", o.DeliveryId)
+                                        @Html.Hidden("rushNow", true)
+                                        @Html.LocalizedText("AccountRushLbl")
+                                        <button type="submit" class="btn btn-primary btn-success pull-right">@Html.LocalizedText("Confirm")</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        
+    }
+    </tbody>
+    
+    </table>
+
+        
+            
+    </div>
+</div>
+    
+</div>

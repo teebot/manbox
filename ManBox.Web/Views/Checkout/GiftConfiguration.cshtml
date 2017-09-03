@@ -1,0 +1,141 @@
+﻿@model ManBox.Model.ViewModels.CheckoutShippingViewModel
+
+<div class="container checkout-gift">
+    <div class="row sheet">
+
+        <div class="span12 checkout-gift-msg">
+
+            <div class="big-title">1. @Html.LocalizedText("GiftsYourMessage")</div>
+            <p class="instruction">@Html.LocalizedText("GiftsYourMessageInfo")</p>
+            <form>
+                <div class="form-element">
+                    <label>@Html.LocalizedText("GiftsHisName")</label>
+                    <input type="text" name="guestName" class="guest-name" />
+                </div>
+                <div class="form-element">
+                    <label>@Html.LocalizedText("GiftsYourMessage2")</label>
+                    <textarea name="giftMsg" class="gift-msg" rows="6">@Model.GiftMsg</textarea>
+                    <div class="text-validation"><strong><span class="char-left"></span> @Html.LocalizedText("GiftsRemainingChars")</strong></div>
+                </div>
+            </form>
+
+            <i class="icon-arrow-right"></i>
+
+            <div class="preview">
+                @Html.LocalizedText("GiftsDear") <span class="guest-name-holder"></span>,<br /><br />
+                <p class="gift-msg-holder">@Model.GiftMsg</p>
+            </div>
+        </div>
+
+        <div class="span12">
+
+            <div class="big-title">2. @Html.LocalizedText("GiftsHisSize")</div>
+            <p class="instruction"></p>
+            <div class="row">
+                <div class="span8 offset2 cart-overview">
+                    <!-- ko if: Pack.Title -->
+                    <div class="pack cart-group" data-trigger="manual" data-content="@Html.LocalizedText("CheckoutSizeVerify")">
+                        <div class="pack-header">
+                            <div class="pack-picture"><img src="@Url.Content("~/Content/images/pack_icon_mini.jpg")" /></div>
+                            @*<div class="pack-picture" data-bind="style: { backgroundImage: 'url(@Url.CdnPath()/packs/pack' + Pack.PackId() + '.jpg)' }" ></div>*@
+                            <span class="item-title" data-bind="text: Pack.Title"></span>
+                            <a class="remove" href="javascript:;"><i class="icon-trash" data-track-action="removePackFromCartOverview" data-bind="click: removePack"></i></a>
+                            <div class="price price-big" data-bind="text: Pack.Price"></div>
+                        </div>
+
+                        <!-- ko foreach: Pack.SelectedProducts -->
+                        <div class="product">
+                            <div class="product-image">
+                                <img data-bind="attr: { src: '@Url.CdnPath()/products/' + ProductReference() + '_S.jpg' }" src="@Url.Content("~/Content/images/tinytrans.gif")" />
+                            </div>
+                            <div class="selection-label">
+                                <div class="title"><span data-bind="text: ProductTitle"></span></div>
+                                <label data-bind="visible: Models().length > 1">Size</label>
+
+                                <div class="btn-toolbar" style="margin: 0;" data-bind="visible: Models().length > 1">
+                                    <div class="btn-group">
+                                        <!-- ko foreach: Models -->
+                                        <button class="btn" data-bind="text: Name, attr: { 'data-value': ModelId() }, click: $parent.selectModelSize, css: { active : $parent.selectedModelId() === ModelId() }"></button>
+                                        <!-- /ko -->
+                                    </div>
+                                </div>
+
+                                <div class="qty" data-bind="text: 'Qty: ' + Quantity()"></div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+
+                    <table class="table table-hover">
+                        <tr>
+                            <td>@Html.LocalizedText("CartSubTotal")</td>
+                            <td class="right-align"><span data-bind="text: ItemsTotal()"></span></td>
+                        </tr>
+                        <tr class="green">
+                            <td class="delivery"><span class="help">@Html.LocalizedText("CartShippingFee") <i class="icon-info-sign"></i></span></td>
+                            <td class="right-align"><span data-bind="text: ShippingFee()">0</span></td>
+                        </tr>
+                        <tr data-bind="visible: CouponAmount() && CouponAmount() !== ''" class="green">
+                            <td class="delivery"><span data-bind="text: CouponLabel"></span></td>
+                            <td class="right-align" data-bind="text: CouponAmount">0</td>
+                        </tr>
+                        <tr class="total-amount">
+                            <td>@Html.LocalizedText("CartTotal")</td>
+                            <td class="right-align"><span data-bind="text: SelectionTotal()"></span></td>
+                        </tr>
+                    </table>
+
+                    <form action="@Url.Action("GiftShipping", "Checkout", null, "https")" id="gift-config-submit" method="post" data-bind="visible: !IsSubscribed()">
+                        <a data-track-action="backFromCheckout" href="@Url.Action("Compose", "Box")" class="btn btn-small pull-left btn-back"><i class="icon-arrow-left"></i> @Html.LocalizedText("BackBtn")</a>
+                        <button class="btn btn-success btn-large btn-checkout pull-right" data-bind="click: validateCheckout" type="submit">@Html.LocalizedText("CartCheckoutBtn") <i class="icon-shopping-cart icon-white"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Conversion Pixel - BE_CozyPixel_Manbox_conversion_checkout_size - DO NOT MODIFY -->
+<img src="https://secure.adnxs.com/px?id=135384&seg=188926,188931,188965,188969&order_id=@(Model.Token)&value=@(Model.TotalInt)&t=2" width="1" height="1" />
+<!-- End of Conversion Pixel -->
+
+<link href='//fonts.googleapis.com/css?family=Rancho' rel='stylesheet' type='text/css'>
+@section modals {
+    @Html.Partial("_DeliveryModal")
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/size")
+
+    <script>
+    $(document).ready(function () {
+        var updateCharLeft = function () {
+            var left = 160 - $('.gift-msg').val().length;
+            $('.char-left').text(left);
+        };
+
+        updateCharLeft();
+
+        $('.guest-name').keyup(function () {
+            $('.guest-name-holder').text($(this).val());
+        });
+
+        $('.gift-msg').keyup(function () {
+            var text = $(this).val();
+            if (text.length < 160) {
+                $('.gift-msg-holder').text(text);
+            } else {
+                $(this).val(text.substr(0, 160));
+            }
+
+            updateCharLeft();
+        });
+
+        $('form#gift-config-submit').on('submit', function (e) {
+            $('.guest-name').appendTo('form#gift-config-submit').hide();
+            $('.gift-msg').appendTo('form#gift-config-submit').hide();
+        });
+    });
+    </script>
+}

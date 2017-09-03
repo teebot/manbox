@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{782775A8-CDC1-40EF-B018-3E465EB284A1}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ManBox.CountrySelect</RootNamespace>
+    <AssemblyName>ManBox.CountrySelect</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\font\fontawesome-webfont.eot" />
+    <Content Include="Content\font\fontawesome-webfont.ttf" />
+    <Content Include="Content\font\fontawesome-webfont.woff" />
+    <Content Include="Content\font\FontAwesome.otf" />
+    <None Include="Properties\PublishProfiles\Copy.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\chuckapproved.png" />
+    <Content Include="Content\font\fontawesome-webfont.svg" />
+    <Content Include="Content\images\brands\sloggi.jpg" />
+    <Content Include="Content\images\butwhy.jpg" />
+    <Content Include="Content\images\chuck-approved-med.png" />
+    <Content Include="Content\images\chuckapproved.png" />
+    <Content Include="Content\images\closeup.jpg" />
+    <Content Include="Content\images\comodo-site-secure%402x.jpg" />
+    <Content Include="Content\images\comodo-site-secure.jpg" />
+    <Content Include="Content\images\facebookConnect.png" />
+    <Content Include="Content\images\facebook_button_small.png" />
+    <Content Include="Content\images\glyphicons-halflings-white.png" />
+    <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Content\images\landing-brands.png" />
+    <Content Include="Content\images\landing\hiking.jpg" />
+    <Content Include="Content\images\landing\landing_vid_thumb.jpg" />
+    <Content Include="Content\images\landing\rugby.jpg" />
+    <Content Include="Content\images\landing\screen.jpg" />
+    <Content Include="Content\images\landing\step1.png" />
+    <Content Include="Content\images\landing\step2.png" />
+    <Content Include="Content\images\landing\step3.png" />
+    <Content Include="Content\images\landing_header.png" />
+    <Content Include="Content\images\logo-big.png" />
+    <Content Include="Content\images\logo-med%402x.png" />
+    <Content Include="Content\images\logo-med.png" />
+    <Content Include="Content\images\logo-small%402x.png" />
+    <Content Include="Content\images\logo-small.png" />
+    <Content Include="Content\images\logo_blue_med.png" />
+    <Content Include="Content\images\machine.png" />
+    <Content Include="Content\images\manbox.png" />
+    <Content Include="Content\images\mastercard.png" />
+    <Content Include="Content\images\obama_thankyou.jpg" />
+    <Content Include="Content\images\pack_icon.jpg" />
+    <Content Include="Content\images\pack_icon_mini.jpg" />
+    <Content Include="Content\images\pattern-gray.png" />
+    <Content Include="Content\images\paymill.jpg" />
+    <Content Include="Content\images\paypal.png" />
+    <Content Include="Content\images\paypal_verified%402x.jpg" />
+    <Content Include="Content\images\paypal_verified.jpg" />
+    <Content Include="Content\images\play-btn.png" />
+    <Content Include="Content\images\postcard-preview.jpg" />
+    <Content Include="Content\images\products\BoxerDim.jpg" />
+    <Content Include="Content\images\products\BoxerDim_L.jpg" />
+    <Content Include="Content\images\products\BriefHom.jpg" />
+    <Content Include="Content\images\products\BriefHom_L.jpg" />
+    <Content Include="Content\images\products\DurexClassic.jpg" />
+    <Content Include="Content\images\products\DurexClassic_L.jpg" />
+    <Content Include="Content\images\products\DurexLove.jpg" />
+    <Content Include="Content\images\products\DurexLove_L.jpg" />
+    <Content Include="Content\images\products\SocksIns.jpg" />
+    <Content Include="Content\images\products\SocksIns_L.jpg" />
+    <Content Include="Content\images\products\SocksRock.jpg" />
+    <Content Include="Content\images\products\SocksRock_L.jpg" />
+    <Content Include="Content\images\products\SocksSport.jpg" />
+    <Content Include="Content\images\products\SocksSport_L.jpg" />
+    <Content Include="Content\images\ribbon-best-deal.png" />
+    <Content Include="Content\images\samples.png" />
+    <Content Include="Content\images\tinytrans.gif" />
+    <Content Include="Content\images\twitter_button_small.png" />
+    <Content Include="Content\images\verif-code.jpg" />
+    <Content Include="Content\images\video_capture_1.jpg" />
+    <Content Include="Content\images\video_capture_1_play.jpg" />
+    <Content Include="Content\images\video_capture_1_play_fb.jpg" />
+    <Content Include="Content\images\vid_thumb.jpg" />
+    <Content Include="Content\images\visa.png" />
+    <Content Include="Content\images\_fr\asseenon.png" />
+    <Content Include="Content\images\_fr\landing_chuck.png" />
+    <Content Include="Content\images\_fr\logo_blue.png" />
+    <Content Include="Content\images\_fr\paypal_subscribe.gif" />
+    <Content Include="Content\images\_fr\testimonials.jpg" />
+    <Content Include="Content\images\_fr\testimonialsLanding.png" />
+    <Content Include="Content\images\_fr\trynow.gif" />
+    <Content Include="Content\images\_fr\trynow.png" />
+    <Content Include="Content\images\_logo-small-black.png" />
+    <Content Include="Content\images\_nl\landing_chuck.png" />
+    <Content Include="Content\images\_nl\logo_blue.png" />
+    <Content Include="Content\images\_nl\paypal_subscribe.gif" />
+    <Content Include="Content\images\_nl\testimonials.jpg" />
+    <Content Include="Content\images\_nl\testimonialsLanding.png" />
+    <Content Include="Content\images\_nl\trynow.gif" />
+    <Content Include="Content\images\_nl\trynow.png" />
+    <Content Include="Content\Site.css" />
+    <Content Include="index.htm" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>29736</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:29736/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

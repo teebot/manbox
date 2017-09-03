@@ -1,0 +1,13 @@
+﻿@if (ManBox.Web.ManBoxHostInfo.Instance.IsMultiLangCountry)
+{
+    foreach (var l in ManBox.Web.ManBoxHostInfo.Instance.AvailLanguages)
+    {
+            var route = (bool)ViewData[WebConstants.ViewDataKeys.IsHome] ? WebConstants.RouteNames.RootLanguage : WebConstants.RouteNames.LocalizedRoute;
+            
+            <a class="lang-switch @(l.Key != System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName ? "disabled" : "")" href="@Url.RouteUrl(route, new { 
+                                        action = ViewContext.RouteData.Values["Action"].ToString(), 
+                                        controller = ViewContext.RouteData.Values["Controller"].ToString(), 
+                                        language = l.Key })">@l.Key.ToUpper()</a>          
+        
+    }
+}

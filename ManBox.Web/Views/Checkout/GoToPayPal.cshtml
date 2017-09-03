@@ -1,0 +1,65 @@
+﻿@model ManBox.Model.ViewModels.PaymentParametersViewModel
+
+<div class="row">
+    <div class="span12">
+
+        <p>@Html.LocalizedText("PayPalRedirectingMsg")</p>
+
+        <div class="progress progress-striped active">
+          <div class="bar" style="width: 100%;"></div>
+        </div>
+
+        
+        <form id="paypal" name="paypal" action="@Model.GatewayUrl" method="post">
+        
+            <!-- Identify your business so that you can collect the payments. -->
+            <input type="hidden" name="business" value="@Model.Account">
+
+            <!-- Specify a Subscribe button. -->
+            <input type="hidden" name="cmd" value="_xclick-subscriptions">
+            <!-- Identify the subscription. -->
+            <input type="hidden" name="item_name" value="@Html.LocalizedText("PayPalManBoxSubscription")">
+            <input type="hidden" name="item_number" value="@Model.SubscriptionId">
+
+            <!-- Set the terms of the regular subscription. -->
+            <input type="hidden" name="lc" value="@System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName.ToUpper()">
+            <input type="hidden" name="currency_code" value="EUR">
+            <input type="hidden" name="a3" value="@Model.Total">
+            <input type="hidden" name="p3" value="3">
+            <input type="hidden" name="t3" value="M">
+            <input type="hidden" name="no_shipping" value="1">
+
+            @if (Model.IsModification)
+            {
+                <input type="hidden" name="modify" value="2">
+                <input type="hidden" name="notify_url" value="@Url.Action("ProcessPayPalModificationResponse", "Checkout", null, Request.Url.Scheme)"  />
+                <input type="hidden" name="return" value="@Url.Action("ThankYouModification", "Checkout", null, Request.Url.Scheme)"  />
+            }
+            else 
+            {
+                <input type="hidden" name="notify_url" value="@Url.Action("ProcessPayPalResponse", "Checkout", null, Request.Url.Scheme)"  />
+                <input type="hidden" name="return" value="@Url.Action("ThankYou", "Checkout", null, Request.Url.Scheme)"  />
+            }
+
+            <input type="hidden" name="shopping_url" value="@Url.Action("Compose", "Box", null, Request.Url.Scheme)"  />
+
+            <!-- Set recurring payments until canceled. -->
+            <input type="hidden" name="src" value="1">
+
+            <!-- Display the payment button. -->
+            @*<input type="image" name="submit" border="0"
+            src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif"
+            alt="PayPal - The safer, easier way to pay online">*@
+            <img alt="" border="0" width="1" height="1"
+            src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+    $(document).ready(function () {
+        $("#paypal").submit();
+    });
+    </script>
+ }

@@ -1,0 +1,27 @@
+﻿@model ManBox.Model.ViewModels.LoginViewModel
+
+<div class="container">
+<div class="row sheet">
+    <div class="span12">
+
+    <h1>@Html.LocalizedText("Authenticate")</h1>
+    @using (Html.BeginForm("Login", "Account"))
+            { 
+            
+                @Html.ValidationMessageFor(m => m.Email)
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email)
+
+                @Html.ValidationMessageFor(m => m.Password)
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+
+                <div>
+                    <button type="submit" class="btn btn-primary btn-large">@Html.LocalizedText("Authenticate")</button>   
+                </div>
+    }
+
+        <p><a href="@Url.Action("PasswordReset", "Account")">@Html.LocalizedText("ForgottenPasswordTitle")</a></p>
+    </div>
+</div>
+</div>

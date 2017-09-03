@@ -1,0 +1,36 @@
+﻿@model ManBox.Model.ViewModels.ContactFormViewModel
+
+<div class="container">
+<div class="row sheet">
+    <div class="span5 contact-form">
+        <h3>@Html.LocalizedText("ContactUs")</h3>
+
+        @using (Html.BeginForm("SendSupportMail", "Account"))
+        {
+            if (string.IsNullOrEmpty(Model.Email))
+            {
+                @Html.LabelFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.Email)
+
+                @Html.LabelFor(m => m.FirstName)
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "input-medium" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+            } 
+            else 
+            {
+                <p>@Html.LocalizedText("ContactFrom"): @Model.Email</p>
+            }
+            
+            @Html.LabelFor(m => m.Message)
+            @Html.TextAreaFor(m => m.Message, new { @class = "input-huge", rows = 10 })
+            @Html.ValidationMessageFor(m => m.Message)
+
+            <button class="btn btn-success btn-large pull-right" type="submit">@Html.LocalizedText("ContactSendBtn") <i class="icon-envelope icon-white"></i></button>
+        }
+    </div>
+    <div class="span7">
+        &nbsp;
+    </div>
+</div>
+</div>

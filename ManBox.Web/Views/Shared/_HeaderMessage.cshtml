@@ -1,0 +1,7 @@
+﻿@if (!string.IsNullOrEmpty(TempData["Message"] as string))
+{ 
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        @((string)TempData["Message"])
+    </div>
+}

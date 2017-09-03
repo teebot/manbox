@@ -1,0 +1,15 @@
+﻿<!--
+    You can find existing browser definitions at
+    <windir>\Microsoft.NET\Framework\<ver>\CONFIG\Browsers
+-->
+<browsers>
+  <browser id="Googlebot" parentID="Mozilla">
+    <identification>
+      <userAgent match="^Googlebot(\-Image)?/(?'version'(?'major'\d+)(?'minor'\.\d+)).*" />
+    </identification>
+    <capabilities>
+      <capability name="crawler" value="true" />
+    </capabilities>
+  </browser>
+</browsers>
+

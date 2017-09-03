@@ -1,0 +1,13 @@
+﻿@model AccountMenuViewModel
+
+<ul class="account-menu nav nav-pills nav-stacked">
+    <li @(Model.ActiveMenuItem == AccountMenuItem.Orders ? " class=active" : "" )>
+        <a href="@Url.Action("OrdersOverview")">@Html.LocalizedText("AccountMyOrders")</a>
+    </li>
+    <li @(Model.ActiveMenuItem == AccountMenuItem.Address ? " class=active" : "" )>
+        <a href="@Url.Action("Address")">@Html.LocalizedText("AccountAddressUpdate")</a>
+    </li>
+    <li @(Model.ActiveMenuItem == AccountMenuItem.Password ? " class=active" : "" )>
+        <a href="@Url.Action("Password")">@Html.LocalizedText("AccountPasswordChange")</a>
+    </li>
+</ul>

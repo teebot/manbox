@@ -1,0 +1,48 @@
+﻿@model ManBox.Model.ViewModels.SubscribeNewsletterViewModel
+
+<footer>
+    <div class="row">
+        <div class="span4 footer-links">
+            
+            
+            @*<a href="@Url.Action("Index", "Home", new { language = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, redirect = false })">Home</a>*@
+            @if(System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "fr") 
+            {
+                <a href="@Url.Action("Index", "About")">Qu'est-ce que ManBox ?</a><br />
+                <a href="@Url.Action("Faq", "About")">FAQ</a><br />
+                <a href="http://manbox.be/blog">Blog</a><br />
+            }
+            <a target="_blank" href="https://twitter.com/manboxteam">
+                <i class="icon-twitter footer-icon"></i> Twitter
+            </a><br />
+
+            <a target="_blank" href="http://www.facebook.com/pages/Manbox/100147390164476">
+                <i class="icon-facebook footer-icon"></i> Facebook
+            </a><br />
+            
+        </div>
+
+        <div class="span4 footer-links">
+            <a href="@Url.Action("Conditions", "About")">@Html.LocalizedText("TermsAndConditions")</a><br />
+            <a href="@Url.Action("Imprint", "About")">@Html.LocalizedText("Imprint")</a> <br />
+            <a href="@Url.Action("Privacy", "About")">@Html.LocalizedText("PrivacyTerms")</a><br />
+            <a href="@Url.Action("Contact", "Account")">Contact</a> <br />
+        </div>
+        <div class="span4">
+            <div class="footer-header pull-right">@Html.LocalizedText("FooterSubscribeNewsletter")</div>
+            @using (Html.BeginForm("SubscribeNewsletterEmail", "Account", FormMethod.Post, new { @class = "form-inline pull-right" }))
+            {        
+                @Html.ValidationMessageFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "email@email.com", @class = "input-medium" })
+                <button type="submit" class="btn">@Html.LocalizedText("LandingNotifyMe")</button>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12 footer-links">
+            <a class="pull-right" href="@Url.Action("Index", "Home", new { language = System.Globalization.CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, redirect = false })">
+                &copy; ManBox @DateTime.Now.Year
+            </a>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,54 @@
+﻿
+@model ManBox.Model.ViewModels.SubscribeNewsletterViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutMinimal.cshtml";
+}
+
+
+ <div class="row">
+        <div class="span12">
+            <div class="alert alert-info">
+@*                <button type="button" class="close" data-dismiss="alert">&times;</button>*@
+                @Html.LocalizedText("LandingSoonTitle")
+            </div>
+        </div>
+    </div>     
+<div class="landing">
+    <img src="@Url.LocalizedImage("landing_chuck.png")" />
+
+    <div class="notify-box sheet">
+        <h5>@Html.LocalizedText("LandingSoonSubtitle")</h5>
+        @using (Html.BeginForm("SubscribeNewsletterEmail", "Account")) 
+        {        
+                @Html.ValidationMessageFor(m => m.Email)
+                @Html.TextBoxFor(m => m.Email, new { placeholder = "email@email.com" })
+
+            <div>
+                <button type="submit" class="btn btn-primary btn-large">@Html.LocalizedText("LandingNotifyMe")</button>   
+            </div>
+        }
+
+        <h5>@Html.LocalizedText("LandingFollowUsOn")
+                &nbsp;
+            <a target="_blank" href="https://twitter.com/manboxteam">
+                <i class="icon-twitter"></i>
+            </a> &nbsp;&nbsp;
+            <a target="_blank" href="http://www.facebook.com/pages/Manbox/100147390164476">
+                <i class="icon-facebook"></i>
+            </a>
+        </h5>
+
+        <p>@Html.LocalizedText("LandingExistingCustomersMayLogin") <a href="@Url.Action("Login", "Account")">@Html.LocalizedText("Here")</a></p>
+    </div>
+</div>
+
+
+<div class="row landing-secondary">
+    @Html.LocalizedText("LandingSecondaryHtml", new[] { @Url.Action("Compose", "Box") })
+
+    
+</div>
+
+
+
